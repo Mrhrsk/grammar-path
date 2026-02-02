@@ -623,7 +623,7 @@
             const level = this.currentLevel;
 
             const systemInstruction = "You are an expert ESL/EFL Curriculum Designer.";
-            const prompt = `Create a 45-minute lesson plan for ${level} students on: "${topic.title}". Context: ${topic.desc}. Key Difficulty: ${topic.tip}. Structured Markdown.`;
+            const prompt = `Create a 60-minute lesson plan for ${level} students on: "${topic.title}". Context: ${topic.desc}. Key Difficulty: ${topic.tip}. Write just in plain text. There must not be any grids and tables, only lists are allowed.`;
 
             try {
                 const response = await callGemini(prompt, systemInstruction);
@@ -645,7 +645,7 @@
             const level = this.currentLevel;
 
             const systemInstruction = "You are an English teacher.";
-            const prompt = `Generate 5 example sentences for "${topic.title}" (Level ${level}). Simple bulleted list in Markdown.`;
+            const prompt = `Generate 10 example sentences for "${topic.title}" (Level ${level}). Simple bulleted list in Markdown.`;
 
             try {
                 const response = await callGemini(prompt, systemInstruction);
