@@ -7,13 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Custom Scrollbar for cleaner UI */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        /* Chart Container Best Practices */
+        /* Chart Container */
         .chart-container {
             position: relative;
             width: 100%;
@@ -23,66 +23,32 @@
             height: 300px;
             max-height: 400px;
         }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
 
-        @media (min-width: 768px) {
-            .chart-container { height: 350px; }
-        }
-
-        /* Card Hover Effects */
+        /* Interactivity */
         .topic-card { transition: all 0.2s ease-in-out; }
-        .topic-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
+        .topic-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
 
-        /* Tab Active State */
+        /* Tabs */
         .tab-active { border-bottom: 3px solid #475569; color: #1e293b; font-weight: 600; }
         .tab-inactive { color: #64748b; border-bottom: 3px solid transparent; }
         .tab-inactive:hover { color: #334155; border-bottom: 3px solid #cbd5e1; }
 
-        /* --- NEW: BEAUTIFUL AI CONTENT STYLING --- */
-        .ai-content { line-height: 1.6; }
-        .ai-content h1 { font-size: 1.5rem; font-weight: 700; color: #1e293b; margin-top: 1.5rem; margin-bottom: 0.75rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
-        .ai-content h2 { font-size: 1.25rem; font-weight: 600; color: #334155; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        /* AI Content Styling - Clean Text Focus */
+        .ai-content { line-height: 1.7; color: #334155; }
+        .ai-content h1 { font-size: 1.4rem; font-weight: 800; color: #1e293b; margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .ai-content h2 { font-size: 1.2rem; font-weight: 700; color: #334155; margin-top: 1.5rem; margin-bottom: 0.75rem; }
         .ai-content h3 { font-size: 1.1rem; font-weight: 600; color: #475569; margin-top: 1.25rem; margin-bottom: 0.5rem; }
-        .ai-content p { margin-bottom: 1rem; color: #475569; }
-        .ai-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #475569; }
-        .ai-content ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; color: #475569; }
-        .ai-content li { margin-bottom: 0.25rem; }
+        .ai-content p { margin-bottom: 1rem; }
+        .ai-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+        .ai-content ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+        .ai-content li { margin-bottom: 0.5rem; }
         .ai-content strong { color: #4338ca; font-weight: 600; }
-
-        /* Table Styling */
-        .ai-content table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            font-size: 0.95rem;
-            background-color: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            overflow: hidden; /* For rounded corners */
-        }
-        .ai-content th {
-            background-color: #f1f5f9;
-            color: #334155;
-            font-weight: 600;
-            text-align: left;
-            padding: 12px 16px;
-            border-bottom: 2px solid #cbd5e1;
-        }
-        .ai-content td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #e2e8f0;
-            color: #475569;
-            vertical-align: top;
-        }
-        .ai-content tr:last-child td { border-bottom: none; }
-        .ai-content tr:nth-child(even) { background-color: #f8fafc; }
     </style>
 </head>
 <body class="bg-stone-50 text-slate-800 font-sans min-h-screen flex flex-col">
 
-<!-- Header Section -->
+<!-- Header -->
 <header class="bg-white border-b border-stone-200 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
@@ -98,14 +64,13 @@
     </div>
 </header>
 
-<!-- Main Content Area -->
+<!-- Main -->
 <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-
     <div class="mb-10 text-center max-w-3xl mx-auto">
         <h1 class="text-3xl font-bold text-slate-800 mb-4">A Progressive English Grammar Curriculum</h1>
         <p class="text-lg text-slate-600">
             This interactive guide outlines the optimal sequence for teaching English grammar.
-            Starting from absolute zero (A1) to near-native proficiency (C2), topics are ordered to minimize cognitive overload and maximize retention.
+            Starting from absolute zero (A1) to near-native proficiency (C2).
         </p>
     </div>
 
@@ -131,9 +96,9 @@
     </div>
 </main>
 
-<!-- Modal for Topic Details -->
+<!-- Modal -->
 <div id="topic-modal" class="fixed inset-0 bg-slate-900 bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform transition-all flex flex-col">
+    <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-all flex flex-col">
         <div class="p-6 flex-grow overflow-y-auto">
             <div class="flex justify-between items-start">
                 <div>
@@ -146,10 +111,10 @@
             <div class="mt-6 space-y-6">
                 <div>
                     <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide">Concept Summary</h4>
-                    <p id="modal-desc" class="mt-2 text-slate-700 leading-relaxed">Description goes here.</p>
+                    <p id="modal-desc" class="mt-2 text-slate-700 leading-relaxed"></p>
                 </div>
 
-                <!-- PDF Resource Section -->
+                <!-- PDF Link -->
                 <div id="pdf-resource-section" class="bg-amber-50 p-4 rounded-md border border-amber-100 flex items-center justify-between">
                     <div class="flex items-center gap-3">
                         <span class="text-2xl">📄</span>
@@ -162,18 +127,17 @@
                     <span id="pdf-missing-badge" class="hidden px-3 py-1 bg-stone-200 text-stone-500 rounded text-sm font-medium">No corresponding presentation</span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-stone-50 p-4 rounded-md border border-stone-200">
-                        <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide mb-2">Key Examples</h4>
-                        <ul id="modal-examples" class="list-disc list-inside text-slate-700 space-y-1"></ul>
-                    </div>
-                    <div class="bg-indigo-50 p-4 rounded-md border border-indigo-100">
-                        <h4 class="text-sm font-bold text-indigo-800 uppercase tracking-wide mb-2">Teacher's Tip</h4>
-                        <p id="modal-tip" class="text-indigo-900 text-sm">Tip content.</p>
-                    </div>
+                <div class="bg-stone-50 p-4 rounded-md border border-stone-200">
+                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide mb-2">Key Examples</h4>
+                    <ul id="modal-examples" class="list-disc list-inside text-slate-700 space-y-1"></ul>
                 </div>
 
-                <!-- AI Assistant Section -->
+                <div class="bg-indigo-50 p-4 rounded-md border border-indigo-100">
+                    <h4 class="text-sm font-bold text-indigo-800 uppercase tracking-wide mb-2">Teacher's Tip</h4>
+                    <p id="modal-tip" class="text-indigo-900 text-sm"></p>
+                </div>
+
+                <!-- AI Section -->
                 <div class="mt-6 border-t border-stone-200 pt-6">
                     <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide mb-3 flex items-center gap-2">
                         <span>AI Assistant</span>
@@ -188,15 +152,13 @@
                         </button>
                     </div>
 
-                    <!-- AI Output Container -->
                     <div id="ai-output" class="mt-4 hidden animate-fade-in">
                         <div id="ai-loading" class="flex items-center gap-2 text-slate-500 text-sm italic p-4 bg-stone-50 rounded-md border border-stone-200">
                             <div class="animate-spin h-4 w-4 border-2 border-purple-500 border-t-transparent rounded-full"></div>
                             <span id="ai-loading-text">Consulting the AI...</span>
                         </div>
-                        <!-- Styled AI Content Box -->
                         <div id="ai-content-box" class="hidden">
-                            <div id="ai-content" class="ai-content p-6 rounded-md border border-purple-200 shadow-sm bg-white"></div>
+                            <div id="ai-content" class="ai-content bg-white p-6 rounded-md border border-purple-200 shadow-inner"></div>
                         </div>
                         <div id="ai-error" class="hidden text-red-600 text-sm p-4 bg-red-50 rounded-md border border-red-200 mt-2"></div>
                     </div>
@@ -209,14 +171,19 @@
     </div>
 </div>
 
-<!-- LOGIC -->
+<footer class="bg-stone-100 border-t border-stone-200 mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+        <p>&copy; 2023 GrammarPath. Designed for EFL/ESL Educators.</p>
+    </div>
+</footer>
+
 <script>
-    // 👇 PASTE YOUR KEY HERE
+    // ⬇️ PASTE YOUR API KEY HERE
     const apiKey = "AIzaSyAAZfO8H5O6b4YnBO2W17fSIeUt6CQuZHA";
 
-    // Gemini API Helper
+    // ✅ CHANGED: Switched to gemini-1.5-flash (Stable) to fix 400 errors
     async function callGemini(prompt, systemInstruction = "") {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
         const payload = {
             contents: [{ parts: [{ text: prompt }] }],
             systemInstruction: { parts: [{ text: systemInstruction }] }
@@ -240,8 +207,20 @@
         }
     }
 
-    // --- PASTE YOUR grammarData HERE ---
-    // (Use the version from your screenshot that has your PDF links!)
+    function parseMarkdown(text) {
+        let html = text
+            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+            .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+            .replace(/^\s*[\-\*] (.*)/gim, '<ul><li>$1</li></ul>')
+            .replace(/<\/ul>\s*<ul>/gim, '')
+            .replace(/^\d+\. (.*)/gim, '<ol><li>$1</li></ol>')
+            .replace(/<\/ol>\s*<ol>/gim, '')
+            .replace(/\n/gim, '<br>');
+        return html;
+    }
+
     const grammarData = {
         'A1': {
             title: "The Foundation",
@@ -281,11 +260,11 @@
             topics: [
                 { id: 'b1_1', title: "Present Perfect Simple", category: "Tenses", desc: "Experiences and unfinished past.", examples: ["I have been to Paris."], tip: "Contrast with Past Simple." },
                 { id: 'b1_2', title: "For vs Since", category: "Prepositions", desc: "Duration vs Starting point.", examples: ["For 2 hours."], tip: "Link to Present Perfect." },
-                { id: 'b1_3', title: "Zero & First Conditional", category: "Structure", desc: "Facts (Zero) and Real Possibilities (First).", examples: ["If it rains, I will stay home."], tip: "Focus on the structure: If + Present, ... Future.", pdf: "https://drive.google.com/file/d/1WOqqSp_Ndw3GUFuoafNMpDXKQKjzH9el/view?usp=sharing", pdfTitle: "Lesson: Everyday Superstitions" },
+                { id: 'b1_3', title: "Zero & First Conditional", category: "Structure", desc: "Facts (Zero) and Real Possibilities (First).", examples: ["If it rains, I will stay home."], tip: "Focus on the structure: If + Present, ... Future.", pdf: "https://drive.google.com/file/d/1WOqqSp_Ndw3GUFuoafNMpDXKQKjzH9el/view?usp=sharing", pdfTitle: "Lesson: Everyday Superstitions (Conditionals Context)" },
                 { id: 'b1_4', title: "Modals of Deduction (Present)", category: "Modals", desc: "Must, Might, Can't.", examples: ["He must be tired."], tip: "Teach as probability scale." },
-                { id: 'b1_5', title: "Passive Voice (Simple)", category: "Structure", desc: "Focus on the object/action.", examples: ["The glass was broken."], tip: "Explain 'Why' we use it.", pdf: "https://drive.google.com/file/d/1ODXy1cMM4Mg11xnmjo-NwmVSRLr4WDbZ/view?usp=sharing", pdfTitle: "Lesson: Spotlight on Eurovision" },
+                { id: 'b1_5', title: "Passive Voice (Simple)", category: "Structure", desc: "Focus on the object/action.", examples: ["The glass was broken."], tip: "Explain 'Why' we use it.", pdf: "https://drive.google.com/file/d/1ODXy1cMM4Mg11xnmjo-NwmVSRLr4WDbZ/view?usp=sharing", pdfTitle: "Lesson: Spotlight on Eurovision (Passive Context)" },
                 { id: 'b1_6', title: "Past Continuous", category: "Tenses", desc: "Interrupted actions.", examples: ["I was sleeping when..."], tip: "Use 'While' vs 'When'." },
-                { id: 'b1_7', title: "Used to", category: "Structure", desc: "Past habits/states.", examples: ["I used to smoke."], tip: "Contrast with 'Be used to'.", pdf: "https://drive.google.com/file/d/1tOY5iH_NU-sRmAOOdWvTwcbzfx73IN6v/view?usp=sharing", pdfTitle: "Lesson: The Journey of Life" },
+                { id: 'b1_7', title: "Used to", category: "Structure", desc: "Past habits/states.", examples: ["I used to smoke."], tip: "Contrast with 'Be used to'.", pdf: "https://drive.google.com/file/d/1tOY5iH_NU-sRmAOOdWvTwcbzfx73IN6v/view?usp=sharing", pdfTitle: "Lesson: The Journey of Life (Past Habits)" },
                 { id: 'b1_8', title: "Quantifiers", category: "Determiners", desc: "A few, A little, Plenty.", examples: ["A little money."], tip: "Review countable/uncountable." },
                 { id: 'b1_9', title: "Relative Clauses (Defining)", category: "Structure", desc: "Who, which, that.", examples: ["The man who called."], tip: "Students often omit pronouns." },
                 { id: 'b1_10', title: "Indefinite Pronouns", category: "Pronouns", desc: "Something, Anywhere.", examples: ["Is anyone home?"], tip: "Treat as singular." }
@@ -549,6 +528,7 @@
             }
         },
 
+        // ✅ CHANGED: Prompt now strictly asks for headers and bullets, forbidding tables to ensure clean output
         generateLessonPlan: async function() {
             if (!this.currentTopicData) return;
 
@@ -557,23 +537,19 @@
             const level = this.currentLevel;
 
             const systemInstruction = "You are an expert ESL/EFL Curriculum Designer.";
-
-            // --- CHANGED: ASK FOR HTML INSTEAD OF MARKDOWN ---
             const prompt = `Create a 60-minute lesson plan for ${level} students on: "${topic.title}".
-                Context: ${topic.desc}. Key Difficulty: ${topic.tip}.
+            Context: ${topic.desc}. Key Difficulty: ${topic.tip}.
 
-                IMPORTANT: Output the response as a raw HTML fragment (no \`\`\`html block markers).
-                Use <h3> for headers, <p> for text, <ul>/<li> for lists.
-                Use a standard HTML <table> for the schedule/timings.
-                Do not include <head> or <body> tags.`;
+            IMPORTANT: Format the response using only clear Headers (###) and bullet points (-).
+            Do NOT use Markdown tables.
+            Structure the plan clearly with time allocations in the headers (e.g., ### 1. Warm-up (5 mins)).`;
 
             try {
                 const response = await callGemini(prompt, systemInstruction);
-                // No need to parse Markdown anymore!
-                document.getElementById('ai-content').innerHTML = response;
+                document.getElementById('ai-content').innerHTML = parseMarkdown(response);
                 document.getElementById('ai-content-box').classList.remove('hidden');
             } catch (error) {
-                document.getElementById('ai-error').innerText = "Error generating lesson plan.";
+                document.getElementById('ai-error').innerText = "Error generating lesson plan. Please check API Key.";
                 document.getElementById('ai-error').classList.remove('hidden');
             } finally {
                 this.setAiLoading(false);
@@ -588,17 +564,14 @@
             const level = this.currentLevel;
 
             const systemInstruction = "You are an English teacher.";
-
-            // --- CHANGED: ASK FOR HTML INSTEAD OF MARKDOWN ---
-            const prompt = `Generate 10 example sentences for "${topic.title}" (Level ${level}).
-                Output as a raw HTML fragment with <ul> and <li> tags.`;
+            const prompt = `Generate 5 example sentences for "${topic.title}" (Level ${level}). Simple bulleted list in Markdown.`;
 
             try {
                 const response = await callGemini(prompt, systemInstruction);
-                document.getElementById('ai-content').innerHTML = `<h3>✨ Fresh Examples for ${topic.title}</h3>` + response;
+                document.getElementById('ai-content').innerHTML = `<h3>✨ Fresh Examples for ${topic.title}</h3>` + parseMarkdown(response);
                 document.getElementById('ai-content-box').classList.remove('hidden');
             } catch (error) {
-                document.getElementById('ai-error').innerText = "Error generating examples.";
+                document.getElementById('ai-error').innerText = "Error generating examples. Please check API Key.";
                 document.getElementById('ai-error').classList.remove('hidden');
             } finally {
                 this.setAiLoading(false);
