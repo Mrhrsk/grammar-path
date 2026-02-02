@@ -623,7 +623,7 @@
             const level = this.currentLevel;
 
             const systemInstruction = "You are an expert ESL/EFL Curriculum Designer.";
-            const prompt = `Create a 60-minute lesson plan for ${level} students on: "${topic.title}". Context: ${topic.desc}. Key Difficulty: ${topic.tip}. Write just in plain text. There must not be any grids and tables, only lists are allowed.`;
+            const prompt = `Create a 60-minute lesson plan for ${level} students on: "${topic.title}". Context: ${topic.desc}. Key Difficulty: ${topic.tip}. Write just in plain text. There must not be any grids and tables, only lists are allowed. Write overall plan of the lesson first, then elaborate each stage of the lesson. You must provide all the materials, texts and links if there are any.`;
 
             try {
                 const response = await callGemini(prompt, systemInstruction);
