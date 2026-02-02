@@ -645,7 +645,7 @@
             const level = this.currentLevel;
 
             const systemInstruction = "You are an English teacher.";
-            const prompt = `Generate 5 example sentences for "${topic.title}" (Level ${level}). Simple bulleted list in Markdown.`;
+            const prompt = `Generate 10 example sentences for "${topic.title}" (Level ${level}). Simple bulleted list in Markdown.`;
 
             try {
                 const response = await callGemini(prompt, systemInstruction);
