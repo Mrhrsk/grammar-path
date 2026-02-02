@@ -8,19 +8,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* Custom Scrollbar for cleaner UI */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
         /* Chart Container Best Practices */
         .chart-container {
@@ -34,46 +25,62 @@
         }
 
         @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
+            .chart-container { height: 350px; }
         }
 
         /* Card Hover Effects */
-        .topic-card {
-            transition: all 0.2s ease-in-out;
-        }
+        .topic-card { transition: all 0.2s ease-in-out; }
         .topic-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         /* Tab Active State */
-        .tab-active {
-            border-bottom: 3px solid #475569;
-            color: #1e293b;
-            font-weight: 600;
-        }
-        .tab-inactive {
-            color: #64748b;
-            border-bottom: 3px solid transparent;
-        }
-        .tab-inactive:hover {
-            color: #334155;
-            border-bottom: 3px solid #cbd5e1;
-        }
+        .tab-active { border-bottom: 3px solid #475569; color: #1e293b; font-weight: 600; }
+        .tab-inactive { color: #64748b; border-bottom: 3px solid transparent; }
+        .tab-inactive:hover { color: #334155; border-bottom: 3px solid #cbd5e1; }
 
-        /* Markdown Styles for AI Content */
-        .ai-content h1, .ai-content h2, .ai-content h3 { font-weight: bold; margin-top: 1em; margin-bottom: 0.5em; color: #1e293b; }
-        .ai-content ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1em; }
-        .ai-content ol { list-style-type: decimal; padding-left: 1.5em; margin-bottom: 1em; }
-        .ai-content p { margin-bottom: 1em; }
-        .ai-content strong { color: #4338ca; } /* Indigo-700 for bold AI text */
+        /* --- NEW: BEAUTIFUL AI CONTENT STYLING --- */
+        .ai-content { line-height: 1.6; }
+        .ai-content h1 { font-size: 1.5rem; font-weight: 700; color: #1e293b; margin-top: 1.5rem; margin-bottom: 0.75rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .ai-content h2 { font-size: 1.25rem; font-weight: 600; color: #334155; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        .ai-content h3 { font-size: 1.1rem; font-weight: 600; color: #475569; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+        .ai-content p { margin-bottom: 1rem; color: #475569; }
+        .ai-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #475569; }
+        .ai-content ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; color: #475569; }
+        .ai-content li { margin-bottom: 0.25rem; }
+        .ai-content strong { color: #4338ca; font-weight: 600; }
+
+        /* Table Styling */
+        .ai-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden; /* For rounded corners */
+        }
+        .ai-content th {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 2px solid #cbd5e1;
+        }
+        .ai-content td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #475569;
+            vertical-align: top;
+        }
+        .ai-content tr:last-child td { border-bottom: none; }
+        .ai-content tr:nth-child(even) { background-color: #f8fafc; }
     </style>
 </head>
 <body class="bg-stone-50 text-slate-800 font-sans min-h-screen flex flex-col">
-
-<!-- Chosen Palette: Academic Calm (Warm Neutral Backgrounds #fafaf9, Slate Blue/Grey text #1e293b, Sage Green accents, Muted Terracotta for complexity) -->
 
 <!-- Header Section -->
 <header class="bg-white border-b border-stone-200 sticky top-0 z-50">
@@ -94,20 +101,15 @@
 <!-- Main Content Area -->
 <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
 
-    <!-- INTRO CONTEXT -->
     <div class="mb-10 text-center max-w-3xl mx-auto">
         <h1 class="text-3xl font-bold text-slate-800 mb-4">A Progressive English Grammar Curriculum</h1>
         <p class="text-lg text-slate-600">
             This interactive guide outlines the optimal sequence for teaching English grammar.
             Starting from absolute zero (A1) to near-native proficiency (C2), topics are ordered to minimize cognitive overload and maximize retention.
-            Select a proficiency level below to explore the syllabus.
         </p>
     </div>
 
-    <!-- VIEW: CURRICULUM -->
     <div id="view-curriculum" class="space-y-6">
-
-        <!-- Level Navigation Tabs -->
         <div class="border-b border-stone-200">
             <nav class="-mb-px flex space-x-4 overflow-x-auto" aria-label="Tabs">
                 <button onclick="app.loadLevel('A1')" id="tab-A1" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm w-1/6 text-center">A1: Starter</button>
@@ -118,31 +120,20 @@
                 <button onclick="app.loadLevel('C2')" id="tab-C2" class="tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm w-1/6 text-center">C2: Mastery</button>
             </nav>
         </div>
-
-        <!-- Level Dashboard -->
-        <div id="level-content" class="animate-fade-in">
-            <!-- DYNAMIC CONTENT LOADED HERE via JS -->
-        </div>
-
+        <div id="level-content" class="animate-fade-in"></div>
     </div>
 
-    <!-- VIEW: ROADMAP (Hidden by default) -->
     <div id="view-roadmap" class="hidden">
         <div class="bg-white rounded-lg shadow-sm p-6 border border-stone-200">
             <h2 class="text-2xl font-bold text-slate-800 mb-4">The Complexity Ascent</h2>
-            <p class="text-slate-600 mb-8">This visualization tracks the cumulative "Grammatical Load" across the learning journey. Notice how the complexity spikes at the B2 transition point, where abstract concepts are introduced.</p>
-
-            <div class="chart-container">
-                <canvas id="roadmapChart"></canvas>
-            </div>
+            <div class="chart-container"><canvas id="roadmapChart"></canvas></div>
         </div>
     </div>
-
 </main>
 
 <!-- Modal for Topic Details -->
 <div id="topic-modal" class="fixed inset-0 bg-slate-900 bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-all flex flex-col">
+    <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform transition-all flex flex-col">
         <div class="p-6 flex-grow overflow-y-auto">
             <div class="flex justify-between items-start">
                 <div>
@@ -167,26 +158,19 @@
                             <p id="pdf-status-text" class="text-sm text-amber-800">Available for download</p>
                         </div>
                     </div>
-                    <a id="pdf-link-btn" href="#" target="_blank" class="px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors text-sm font-medium shadow-sm">
-                        Open PDF
-                    </a>
-                    <span id="pdf-missing-badge" class="hidden px-3 py-1 bg-stone-200 text-stone-500 rounded text-sm font-medium">
-                            No corresponding presentation
-                        </span>
+                    <a id="pdf-link-btn" href="#" target="_blank" class="px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors text-sm font-medium shadow-sm">Open PDF</a>
+                    <span id="pdf-missing-badge" class="hidden px-3 py-1 bg-stone-200 text-stone-500 rounded text-sm font-medium">No corresponding presentation</span>
                 </div>
 
-                <div class="bg-stone-50 p-4 rounded-md border border-stone-200">
-                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide mb-2">Key Examples</h4>
-                    <ul id="modal-examples" class="list-disc list-inside text-slate-700 space-y-1">
-                        <!-- JS populated -->
-                    </ul>
-                </div>
-
-                <div class="bg-indigo-50 p-4 rounded-md border border-indigo-100">
-                    <h4 class="text-sm font-bold text-indigo-800 uppercase tracking-wide mb-2 flex items-center">
-                        <span>Teacher's Tip</span>
-                    </h4>
-                    <p id="modal-tip" class="text-indigo-900 text-sm">Tip content.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-stone-50 p-4 rounded-md border border-stone-200">
+                        <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide mb-2">Key Examples</h4>
+                        <ul id="modal-examples" class="list-disc list-inside text-slate-700 space-y-1"></ul>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-md border border-indigo-100">
+                        <h4 class="text-sm font-bold text-indigo-800 uppercase tracking-wide mb-2">Teacher's Tip</h4>
+                        <p id="modal-tip" class="text-indigo-900 text-sm">Tip content.</p>
+                    </div>
                 </div>
 
                 <!-- AI Assistant Section -->
@@ -210,30 +194,25 @@
                             <div class="animate-spin h-4 w-4 border-2 border-purple-500 border-t-transparent rounded-full"></div>
                             <span id="ai-loading-text">Consulting the AI...</span>
                         </div>
+                        <!-- Styled AI Content Box -->
                         <div id="ai-content-box" class="hidden">
-                            <div id="ai-content" class="ai-content text-sm text-slate-700 bg-white p-6 rounded-md border border-purple-200 shadow-inner"></div>
+                            <div id="ai-content" class="ai-content p-6 rounded-md border border-purple-200 shadow-sm bg-white"></div>
                         </div>
                         <div id="ai-error" class="hidden text-red-600 text-sm p-4 bg-red-50 rounded-md border border-red-200 mt-2"></div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="p-6 border-t border-stone-100 bg-stone-50 rounded-b-lg flex justify-end">
             <button onclick="app.closeModal()" class="px-4 py-2 bg-white border border-stone-300 text-slate-700 rounded hover:bg-stone-50 transition-colors font-medium">Close</button>
         </div>
     </div>
 </div>
 
-<footer class="bg-stone-100 border-t border-stone-200 mt-12 py-8">
-    <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-        <p>&copy; 2023 GrammarPath. Designed for EFL/ESL Educators.</p>
-    </div>
-</footer>
-
 <!-- LOGIC -->
 <script>
-    const apiKey = "AIzaSyAAZfO8H5O6b4YnBO2W17fSIeUt6CQuZHA"; // Set by environment
+    // 👇 PASTE YOUR KEY HERE
+    const apiKey = "AIzaSyAAZfO8H5O6b4YnBO2W17fSIeUt6CQuZHA";
 
     // Gemini API Helper
     async function callGemini(prompt, systemInstruction = "") {
@@ -244,7 +223,6 @@
         };
 
         const delays = [1000, 2000, 4000];
-
         for (let i = 0; i <= delays.length; i++) {
             try {
                 const response = await fetch(url, {
@@ -252,9 +230,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
                 const data = await response.json();
                 return data.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
             } catch (error) {
@@ -264,23 +240,8 @@
         }
     }
 
-    // Markdown Parser
-    function parseMarkdown(text) {
-        let html = text
-            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-            .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
-            .replace(/^\s*[\-\*] (.*)/gim, '<ul><li>$1</li></ul>')
-            .replace(/<\/ul>\s*<ul>/gim, '')
-            .replace(/^\d+\. (.*)/gim, '<ol><li>$1</li></ol>')
-            .replace(/<\/ol>\s*<ol>/gim, '')
-            .replace(/\n/gim, '<br>');
-        return html;
-    }
-
-    // --- DATA STORE ---
-    // Includes PDF links for matched topics
+    // --- PASTE YOUR grammarData HERE ---
+    // (Use the version from your screenshot that has your PDF links!)
     const grammarData = {
         'A1': {
             title: "The Foundation",
@@ -320,38 +281,11 @@
             topics: [
                 { id: 'b1_1', title: "Present Perfect Simple", category: "Tenses", desc: "Experiences and unfinished past.", examples: ["I have been to Paris."], tip: "Contrast with Past Simple." },
                 { id: 'b1_2', title: "For vs Since", category: "Prepositions", desc: "Duration vs Starting point.", examples: ["For 2 hours."], tip: "Link to Present Perfect." },
-                {
-                    id: 'b1_3',
-                    title: "Zero & First Conditional",
-                    category: "Structure",
-                    desc: "Facts (Zero) and Real Possibilities (First).",
-                    examples: ["If it rains, I will stay home."],
-                    tip: "Focus on the structure: If + Present, ... Future.",
-                    pdf: "https://drive.google.com/file/d/1WOqqSp_Ndw3GUFuoafNMpDXKQKjzH9el/view?usp=sharing",
-                    pdfTitle: "Lesson: Everyday Superstitions (Conditionals Context)"
-                },
+                { id: 'b1_3', title: "Zero & First Conditional", category: "Structure", desc: "Facts (Zero) and Real Possibilities (First).", examples: ["If it rains, I will stay home."], tip: "Focus on the structure: If + Present, ... Future.", pdf: "https://drive.google.com/file/d/1WOqqSp_Ndw3GUFuoafNMpDXKQKjzH9el/view?usp=sharing", pdfTitle: "Lesson: Everyday Superstitions" },
                 { id: 'b1_4', title: "Modals of Deduction (Present)", category: "Modals", desc: "Must, Might, Can't.", examples: ["He must be tired."], tip: "Teach as probability scale." },
-                {
-                    id: 'b1_5',
-                    title: "Passive Voice (Simple)",
-                    category: "Structure",
-                    desc: "Focus on the object/action.",
-                    examples: ["The glass was broken."],
-                    tip: "Explain 'Why' we use it.",
-                    pdf: "https://drive.google.com/file/d/1ODXy1cMM4Mg11xnmjo-NwmVSRLr4WDbZ/view?usp=sharing",
-                    pdfTitle: "Lesson: Spotlight on Eurovision (Passive Context)"
-                },
+                { id: 'b1_5', title: "Passive Voice (Simple)", category: "Structure", desc: "Focus on the object/action.", examples: ["The glass was broken."], tip: "Explain 'Why' we use it.", pdf: "https://drive.google.com/file/d/1ODXy1cMM4Mg11xnmjo-NwmVSRLr4WDbZ/view?usp=sharing", pdfTitle: "Lesson: Spotlight on Eurovision" },
                 { id: 'b1_6', title: "Past Continuous", category: "Tenses", desc: "Interrupted actions.", examples: ["I was sleeping when..."], tip: "Use 'While' vs 'When'." },
-                {
-                    id: 'b1_7',
-                    title: "Used to",
-                    category: "Structure",
-                    desc: "Past habits/states.",
-                    examples: ["I used to smoke."],
-                    tip: "Contrast with 'Be used to'.",
-                    pdf: "https://drive.google.com/file/d/1tOY5iH_NU-sRmAOOdWvTwcbzfx73IN6v/view?usp=sharing",
-                    pdfTitle: "Lesson: The Journey of Life (Past Habits)"
-                },
+                { id: 'b1_7', title: "Used to", category: "Structure", desc: "Past habits/states.", examples: ["I used to smoke."], tip: "Contrast with 'Be used to'.", pdf: "https://drive.google.com/file/d/1tOY5iH_NU-sRmAOOdWvTwcbzfx73IN6v/view?usp=sharing", pdfTitle: "Lesson: The Journey of Life" },
                 { id: 'b1_8', title: "Quantifiers", category: "Determiners", desc: "A few, A little, Plenty.", examples: ["A little money."], tip: "Review countable/uncountable." },
                 { id: 'b1_9', title: "Relative Clauses (Defining)", category: "Structure", desc: "Who, which, that.", examples: ["The man who called."], tip: "Students often omit pronouns." },
                 { id: 'b1_10', title: "Indefinite Pronouns", category: "Pronouns", desc: "Something, Anywhere.", examples: ["Is anyone home?"], tip: "Treat as singular." }
@@ -623,11 +557,20 @@
             const level = this.currentLevel;
 
             const systemInstruction = "You are an expert ESL/EFL Curriculum Designer.";
-            const prompt = `Create a 60-minute lesson plan for ${level} students on: "${topic.title}". Context: ${topic.desc}. Key Difficulty: ${topic.tip}. Structured Markdown.`;
+
+            // --- CHANGED: ASK FOR HTML INSTEAD OF MARKDOWN ---
+            const prompt = `Create a 60-minute lesson plan for ${level} students on: "${topic.title}".
+                Context: ${topic.desc}. Key Difficulty: ${topic.tip}.
+
+                IMPORTANT: Output the response as a raw HTML fragment (no \`\`\`html block markers).
+                Use <h3> for headers, <p> for text, <ul>/<li> for lists.
+                Use a standard HTML <table> for the schedule/timings.
+                Do not include <head> or <body> tags.`;
 
             try {
                 const response = await callGemini(prompt, systemInstruction);
-                document.getElementById('ai-content').innerHTML = parseMarkdown(response);
+                // No need to parse Markdown anymore!
+                document.getElementById('ai-content').innerHTML = response;
                 document.getElementById('ai-content-box').classList.remove('hidden');
             } catch (error) {
                 document.getElementById('ai-error').innerText = "Error generating lesson plan.";
@@ -645,11 +588,14 @@
             const level = this.currentLevel;
 
             const systemInstruction = "You are an English teacher.";
-            const prompt = `Generate 5 example sentences for "${topic.title}" (Level ${level}). Simple bulleted list in Markdown.`;
+
+            // --- CHANGED: ASK FOR HTML INSTEAD OF MARKDOWN ---
+            const prompt = `Generate 10 example sentences for "${topic.title}" (Level ${level}).
+                Output as a raw HTML fragment with <ul> and <li> tags.`;
 
             try {
                 const response = await callGemini(prompt, systemInstruction);
-                document.getElementById('ai-content').innerHTML = `<h3>✨ Fresh Examples for ${topic.title}</h3>` + parseMarkdown(response);
+                document.getElementById('ai-content').innerHTML = `<h3>✨ Fresh Examples for ${topic.title}</h3>` + response;
                 document.getElementById('ai-content-box').classList.remove('hidden');
             } catch (error) {
                 document.getElementById('ai-error').innerText = "Error generating examples.";
