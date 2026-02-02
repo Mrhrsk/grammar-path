@@ -177,28 +177,29 @@
 </footer>
 
 <script>
-    // ⬇️ Вставьте ключ, который мы создали (AIza...)
-    const apiKey = "AIzaSyBBdxJh8V10etSF-uM9cyqKga3kifNgPbY";
+    // ⬇️ ВСТАВЬТЕ ВАШ НОВЫЙ КЛЮЧ СЮДА ⬇️
+    const apiKey = "";
 
-    // ✅ FIXED: Robust Function with Automatic Fallback
-    // If Flash (404) fails, it tries Flash-001, then Pro.
+    // Функция вызова AI с автоматическим перебором моделей (Fallback)
     async function callGemini(prompt, systemInstruction = "") {
-        // List of models to try in case of 404 errors
+        // Список моделей для попытки подключения (если первая не сработает, пробуем следующую)
         const modelsToTry = [
             "gemini-1.5-flash",
             "gemini-1.5-flash-001",
             "gemini-pro"
         ];
 
-        const key = apiKey.trim(); // Remove accidental spaces
+        const key = apiKey.trim();
 
         if (!key) {
-            throw new Error("API Key is missing!");
+            throw new Error("API Key не найден! Вставьте ключ в коде.");
         }
 
-        // Loop through models until one works
+        console.log("Начинаем запрос к AI...");
+
+        // Пробуем каждую модель по очереди
         for (const model of modelsToTry) {
-            console.log(`Trying model: ${model}...`);
+            console.log(`Пробуем модель: ${model}...`);
             const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
@@ -212,30 +213,41 @@
                     body: JSON.stringify(payload)
                 });
 
-                // If 404 (Model not found), try the next model in the loop
+                // Если ошибка 404 (Модель не найдена), пробуем следующую
                 if (response.status === 404) {
-                    console.warn(`Model ${model} not found (404). Trying next...`);
+                    console.warn(`Модель ${model} недоступна (404). Пробуем следующую...`);
                     continue;
                 }
 
-                // If other error (like 400 or 403), stop and show it
+                // Если другая ошибка (например, 403 Forbidden - проблема с ключом)
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    const errorData = await response.json().catch(() => ({}));
+                    console.error("Детали ошибки от Google:", errorData);
+                    throw new Error(`Ошибка HTTP ${response.status}: ${errorData.error?.message || 'Неизвестная ошибка'}`);
                 }
 
                 const data = await response.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
+
+                // Проверяем, есть ли текст в ответе
+                if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+                    return data.candidates[0].content.parts[0].text;
+                } else {
+                    throw new Error("Google вернул пустой ответ (undefined).");
+                }
 
             } catch (error) {
-                // If it's the last model and still failing, verify throw
+                // Если это была последняя модель в списке, выбрасываем ошибку пользователю
                 if (model === modelsToTry[modelsToTry.length - 1]) {
+                    console.error("Все попытки провалились.");
                     throw error;
                 }
             }
         }
     }
 
-    // --- DATA STORE ---
+    // --- ОСТАЛЬНОЙ КОД БЕЗ ИЗМЕНЕНИЙ (DATA STORE и APP) ---
+    // (Убедитесь, что grammarData ниже содержит ваши PDF ссылки)
+
     const grammarData = {
         'A1': {
             title: "The Foundation",
