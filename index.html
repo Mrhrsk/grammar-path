@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrammarPath: Complete English Curriculum Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom Scrollbar for cleaner UI */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Chart Container Best Practices */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Card Hover Effects */
+        .topic-card {
+            transition: all 0.2s ease-in-out;
+        }
+        .topic-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Tab Active State */
+        .tab-active {
+            border-bottom: 3px solid #475569;
+            color: #1e293b;
+            font-weight: 600;
+        }
+        .tab-inactive {
+            color: #64748b;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-inactive:hover {
+            color: #334155;
+            border-bottom: 3px solid #cbd5e1;
+        }
+
+        /* Markdown Styles for AI Content */
+        .ai-content h1, .ai-content h2, .ai-content h3 { font-weight: bold; margin-top: 1em; margin-bottom: 0.5em; color: #1e293b; }
+        .ai-content ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1em; }
+        .ai-content ol { list-style-type: decimal; padding-left: 1.5em; margin-bottom: 1em; }
+        .ai-content p { margin-bottom: 1em; }
+        .ai-content strong { color: #4338ca; } /* Indigo-700 for bold AI text */
+    </style>
+</head>
+<body class="bg-stone-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+<!-- Chosen Palette: Academic Calm (Warm Neutral Backgrounds #fafaf9, Slate Blue/Grey text #1e293b, Sage Green accents, Muted Terracotta for complexity) -->
+
+<!-- Header Section -->
+<header class="bg-white border-b border-stone-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center">
+                <span class="text-2xl font-bold text-slate-700 tracking-tight">GrammarPath</span>
+                <span class="ml-3 px-2 py-1 bg-stone-100 text-xs font-medium text-stone-600 rounded">Teacher's Edition</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <button onclick="app.showSection('curriculum')" class="text-slate-600 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Curriculum</button>
+                <button onclick="app.showSection('roadmap')" class="text-slate-600 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Global Roadmap</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content Area -->
+<main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+    <!-- INTRO CONTEXT -->
+    <div class="mb-10 text-center max-w-3xl mx-auto">
+        <h1 class="text-3xl font-bold text-slate-800 mb-4">A Progressive English Grammar Curriculum</h1>
+        <p class="text-lg text-slate-600">
+            This interactive guide outlines the optimal sequence for teaching English grammar.
+            Starting from absolute zero (A1) to near-native proficiency (C2), topics are ordered to minimize cognitive overload and maximize retention.
+            Select a proficiency level below to explore the syllabus.
+        </p>
+    </div>
+
+    <!-- VIEW: CURRICULUM -->
+    <div id="view-curriculum" class="space-y-6">
+
+        <!-- Level Navigation Tabs -->
+        <div class="border-b border-stone-200">
+            <nav class="-mb-px flex space-x-4 overflow-x-auto" aria-label="Tabs">
+                <button onclick="app.loadLevel('A1')" id="tab-A1" class="tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm w-1/6 text-center">A1: Starter</button>
+                <button onclick="app.loadLevel('A2')" id="tab-A2" class="tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm w-1/6 text-center">A2: Elementary</button>
+                <button onclick="app.loadLevel('B1')" id="tab-B1" class="tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm w-1/6 text-center">B1: Intermediate</button>
+                <button onclick="app.loadLevel('B2')" id="tab-B2" class="tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm w-1/6 text-center">B2: Upper Int</button>
+                <button onclick="app.loadLevel('C1')" id="tab-C1" class="tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm w-1/6 text-center">C1: Advanced</button>
+                <button onclick="app.loadLevel('C2')" id="tab-C2" class="tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm w-1/6 text-center">C2: Mastery</button>
+            </nav>
+        </div>
+
+        <!-- Level Dashboard -->
+        <div id="level-content" class="animate-fade-in">
+            <!-- DYNAMIC CONTENT LOADED HERE via JS -->
+        </div>
+
+    </div>
+
+    <!-- VIEW: ROADMAP (Hidden by default) -->
+    <div id="view-roadmap" class="hidden">
+        <div class="bg-white rounded-lg shadow-sm p-6 border border-stone-200">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">The Complexity Ascent</h2>
+            <p class="text-slate-600 mb-8">This visualization tracks the cumulative "Grammatical Load" across the learning journey. Notice how the complexity spikes at the B2 transition point, where abstract concepts are introduced.</p>
+
+            <div class="chart-container">
+                <canvas id="roadmapChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- Modal for Topic Details -->
+<div id="topic-modal" class="fixed inset-0 bg-slate-900 bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-all flex flex-col">
+        <div class="p-6 flex-grow overflow-y-auto">
+            <div class="flex justify-between items-start">
+                <div>
+                    <span id="modal-category" class="inline-block px-2 py-1 text-xs font-semibold rounded bg-blue-100 text-blue-800 mb-2">Category</span>
+                    <h3 id="modal-title" class="text-2xl font-bold text-slate-900">Topic Title</h3>
+                </div>
+                <button onclick="app.closeModal()" class="text-slate-400 hover:text-slate-500 text-2xl font-bold">&times;</button>
+            </div>
+
+            <div class="mt-6 space-y-6">
+                <div>
+                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide">Concept Summary</h4>
+                    <p id="modal-desc" class="mt-2 text-slate-700 leading-relaxed">Description goes here.</p>
+                </div>
+
+                <!-- PDF Resource Section -->
+                <div id="pdf-resource-section" class="bg-amber-50 p-4 rounded-md border border-amber-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">📄</span>
+                        <div>
+                            <h4 class="text-sm font-bold text-amber-900 uppercase tracking-wide">Presentation Material</h4>
+                            <p id="pdf-status-text" class="text-sm text-amber-800">Available for download</p>
+                        </div>
+                    </div>
+                    <a id="pdf-link-btn" href="#" target="_blank" class="px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors text-sm font-medium shadow-sm">
+                        Open PDF
+                    </a>
+                    <span id="pdf-missing-badge" class="hidden px-3 py-1 bg-stone-200 text-stone-500 rounded text-sm font-medium">
+                            No corresponding presentation
+                        </span>
+                </div>
+
+                <div class="bg-stone-50 p-4 rounded-md border border-stone-200">
+                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide mb-2">Key Examples</h4>
+                    <ul id="modal-examples" class="list-disc list-inside text-slate-700 space-y-1">
+                        <!-- JS populated -->
+                    </ul>
+                </div>
+
+                <div class="bg-indigo-50 p-4 rounded-md border border-indigo-100">
+                    <h4 class="text-sm font-bold text-indigo-800 uppercase tracking-wide mb-2 flex items-center">
+                        <span>Teacher's Tip</span>
+                    </h4>
+                    <p id="modal-tip" class="text-indigo-900 text-sm">Tip content.</p>
+                </div>
+
+                <!-- AI Assistant Section -->
+                <div class="mt-6 border-t border-stone-200 pt-6">
+                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wide mb-3 flex items-center gap-2">
+                        <span>AI Assistant</span>
+                        <span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-xs font-medium">Gemini Powered</span>
+                    </h4>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="app.generateLessonPlan()" id="btn-lesson-plan" class="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors text-sm font-medium shadow-sm">
+                            <span>✨ Generate Lesson Plan</span>
+                        </button>
+                        <button onclick="app.generateMoreExamples()" id="btn-examples" class="flex items-center gap-2 px-4 py-2 bg-white border border-stone-300 text-slate-700 rounded-md hover:bg-stone-50 transition-colors text-sm font-medium shadow-sm">
+                            <span>✨ Get More Examples</span>
+                        </button>
+                    </div>
+
+                    <!-- AI Output Container -->
+                    <div id="ai-output" class="mt-4 hidden animate-fade-in">
+                        <div id="ai-loading" class="flex items-center gap-2 text-slate-500 text-sm italic p-4 bg-stone-50 rounded-md border border-stone-200">
+                            <div class="animate-spin h-4 w-4 border-2 border-purple-500 border-t-transparent rounded-full"></div>
+                            <span id="ai-loading-text">Consulting the AI...</span>
+                        </div>
+                        <div id="ai-content-box" class="hidden">
+                            <div id="ai-content" class="ai-content text-sm text-slate-700 bg-white p-6 rounded-md border border-purple-200 shadow-inner"></div>
+                        </div>
+                        <div id="ai-error" class="hidden text-red-600 text-sm p-4 bg-red-50 rounded-md border border-red-200 mt-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-6 border-t border-stone-100 bg-stone-50 rounded-b-lg flex justify-end">
+            <button onclick="app.closeModal()" class="px-4 py-2 bg-white border border-stone-300 text-slate-700 rounded hover:bg-stone-50 transition-colors font-medium">Close</button>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-stone-100 border-t border-stone-200 mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+        <p>&copy; 2023 GrammarPath. Designed for EFL/ESL Educators.</p>
+    </div>
+</footer>
+
+<!-- LOGIC --
+<script>
+    const apiKey = "AIzaSyAAZfO8H5O6b4YnBO2W17fSIeUt6CQuZHA"; // Set by environment
+
+    // Gemini API Helper
+    async function callGemini(prompt, systemInstruction = "") {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        const payload = {
+            contents: [{ parts: [{ text: prompt }] }],
+            systemInstruction: { parts: [{ text: systemInstruction }] }
+        };
+
+        const delays = [1000, 2000, 4000];
+
+        for (let i = 0; i <= delays.length; i++) {
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                const data = await response.json();
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
+            } catch (error) {
+                if (i === delays.length) throw error;
+                await new Promise(resolve => setTimeout(resolve, delays[i]));
+            }
+        }
+    }
+
+    // Markdown Parser
+    function parseMarkdown(text) {
+        let html = text
+            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+            .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+            .replace(/^\s*[\-\*] (.*)/gim, '<ul><li>$1</li></ul>')
+            .replace(/<\/ul>\s*<ul>/gim, '')
+            .replace(/^\d+\. (.*)/gim, '<ol><li>$1</li></ol>')
+            .replace(/<\/ol>\s*<ol>/gim, '')
+            .replace(/\n/gim, '<br>');
+        return html;
+    }
+
+    // --- DATA STORE ---
+    // Includes PDF links for matched topics
+    const grammarData = {
+        'A1': {
+            title: "The Foundation",
+            desc: "Focus on survival English: basic sentence structures, essential verbs, and concrete nouns.",
+            topics: [
+                { id: 'a1_1', title: "Personal Pronouns & To Be", category: "Structure", desc: "I, You, He, She, It, We, They. Conjugation of 'to be'.", examples: ["I am a teacher."], tip: "Don't rush this. Use physical gestures." },
+                { id: 'a1_2', title: "Articles: A / An / The", category: "Nouns", desc: "Indefinite vs Definite articles.", examples: ["It is a cat."], tip: "Start with a/an based on sound." },
+                { id: 'a1_3', title: "Plural Nouns (Regular)", category: "Nouns", desc: "Adding -s and -es to nouns.", examples: ["One dog, two dogs."], tip: "Focus on pronunciation of the 's'." },
+                { id: 'a1_4', title: "Demonstratives: This/That", category: "Determiners", desc: "Pointing to near vs far objects.", examples: ["This is my book."], tip: "Use physical distance." },
+                { id: 'a1_5', title: "Possessive Adjectives", category: "Adjectives", desc: "My, Your, His, Her, Its.", examples: ["This is my pen."], tip: "Contrast with subject pronouns." },
+                { id: 'a1_6', title: "Present Simple (Positive)", category: "Tenses", desc: "Facts, habits, and routines.", examples: ["I like pizza."], tip: "The 3rd person 's' is the key error." },
+                { id: 'a1_7', title: "Present Simple (Negative/Question)", category: "Tenses", desc: "Using 'Do/Does'.", examples: ["I do not know."], tip: "Main verb stays in base form." },
+                { id: 'a1_8', title: "Basic Prepositions of Place", category: "Prepositions", desc: "In, On, Under, Next to.", examples: ["On the table."], tip: "Use realia." },
+                { id: 'a1_9', title: "There is / There are", category: "Structure", desc: "Existence and quantity.", examples: ["There is a pen."], tip: "Connect with prepositions." },
+                { id: 'a1_10', title: "Can / Can't (Ability)", category: "Modals", desc: "Expressing basic ability.", examples: ["I can swim."], tip: "Modals don't change for He/She." }
+            ]
+        },
+        'A2': {
+            title: "Expanding Horizons",
+            desc: "Moving beyond 'here and now'. Talking about the past and future.",
+            topics: [
+                { id: 'a2_1', title: "Past Simple (To Be)", category: "Tenses", desc: "Was / Were.", examples: ["I was tired."], tip: "Teach before regular verbs." },
+                { id: 'a2_2', title: "Past Simple (Regular)", category: "Tenses", desc: "Adding -ed.", examples: ["I played tennis."], tip: "Focus on -ed pronunciation." },
+                { id: 'a2_3', title: "Past Simple (Irregular)", category: "Tenses", desc: "Common irregular verbs.", examples: ["I went to the park."], tip: "Group by sound patterns." },
+                { id: 'a2_4', title: "Countable vs Uncountable", category: "Nouns", desc: "Concepts of quantity.", examples: ["Water (U), Apple (C)."], tip: "Use food items." },
+                { id: 'a2_5', title: "Comparatives & Superlatives", category: "Adjectives", desc: "Comparing things.", examples: ["Faster than."], tip: "Highlight irregulars." },
+                { id: 'a2_6', title: "Present Continuous", category: "Tenses", desc: "Happening now.", examples: ["I am eating."], tip: "Use timelines." },
+                { id: 'a2_7', title: "Future: Going to", category: "Tenses", desc: "Plans and predictions.", examples: ["I am going to buy a car."], tip: "Contrast plans with spontaneous." },
+                { id: 'a2_8', title: "Adverbs of Frequency", category: "Adverbs", desc: "Always, usually, never.", examples: ["I always wake up early."], tip: "Sentence placement." },
+                { id: 'a2_9', title: "Possessive 's", category: "Nouns", desc: "Ownership.", examples: ["John's car."], tip: "Distinguish from plural." },
+                { id: 'a2_10', title: "Prepositions of Time", category: "Prepositions", desc: "In, On, At.", examples: ["On Monday."], tip: "Draw the At-On-In pyramid." }
+            ]
+        },
+        'B1': {
+            title: "The Bridge to Fluency",
+            desc: "Connecting ideas, more complex tenses, and conditionals.",
+            topics: [
+                { id: 'b1_1', title: "Present Perfect Simple", category: "Tenses", desc: "Experiences and unfinished past.", examples: ["I have been to Paris."], tip: "Contrast with Past Simple." },
+                { id: 'b1_2', title: "For vs Since", category: "Prepositions", desc: "Duration vs Starting point.", examples: ["For 2 hours."], tip: "Link to Present Perfect." },
+                {
+                    id: 'b1_3',
+                    title: "Zero & First Conditional",
+                    category: "Structure",
+                    desc: "Facts (Zero) and Real Possibilities (First).",
+                    examples: ["If it rains, I will stay home."],
+                    tip: "Focus on the structure: If + Present, ... Future.",
+                    pdf: "https://drive.google.com/file/d/1WOqqSp_Ndw3GUFuoafNMpDXKQKjzH9el/view?usp=sharing",
+                    pdfTitle: "Lesson: Everyday Superstitions (Conditionals Context)"
+                },
+                { id: 'b1_4', title: "Modals of Deduction (Present)", category: "Modals", desc: "Must, Might, Can't.", examples: ["He must be tired."], tip: "Teach as probability scale." },
+                {
+                    id: 'b1_5',
+                    title: "Passive Voice (Simple)",
+                    category: "Structure",
+                    desc: "Focus on the object/action.",
+                    examples: ["The glass was broken."],
+                    tip: "Explain 'Why' we use it.",
+                    pdf: "https://drive.google.com/file/d/1ODXy1cMM4Mg11xnmjo-NwmVSRLr4WDbZ/view?usp=sharing",
+                    pdfTitle: "Lesson: Spotlight on Eurovision (Passive Context)"
+                },
+                { id: 'b1_6', title: "Past Continuous", category: "Tenses", desc: "Interrupted actions.", examples: ["I was sleeping when..."], tip: "Use 'While' vs 'When'." },
+                {
+                    id: 'b1_7',
+                    title: "Used to",
+                    category: "Structure",
+                    desc: "Past habits/states.",
+                    examples: ["I used to smoke."],
+                    tip: "Contrast with 'Be used to'.",
+                    pdf: "https://drive.google.com/file/d/1tOY5iH_NU-sRmAOOdWvTwcbzfx73IN6v/view?usp=sharing",
+                    pdfTitle: "Lesson: The Journey of Life (Past Habits)"
+                },
+                { id: 'b1_8', title: "Quantifiers", category: "Determiners", desc: "A few, A little, Plenty.", examples: ["A little money."], tip: "Review countable/uncountable." },
+                { id: 'b1_9', title: "Relative Clauses (Defining)", category: "Structure", desc: "Who, which, that.", examples: ["The man who called."], tip: "Students often omit pronouns." },
+                { id: 'b1_10', title: "Indefinite Pronouns", category: "Pronouns", desc: "Something, Anywhere.", examples: ["Is anyone home?"], tip: "Treat as singular." }
+            ]
+        },
+        'B2': {
+            title: "Complexity & Nuance",
+            desc: "Advanced structures and narrative tenses.",
+            topics: [
+                { id: 'b2_1', title: "Second Conditional", category: "Structure", desc: "Hypothetical present/future.", examples: ["If I won..."], tip: "Would you rather...?" },
+                { id: 'b2_2', title: "Third Conditional", category: "Structure", desc: "Regrets.", examples: ["If I had studied..."], tip: "Pronunciation: 'I'd have'." },
+                { id: 'b2_3', title: "Past Perfect Simple", category: "Tenses", desc: "Past of the past.", examples: ["Train had left."], tip: "Use timelines." },
+                { id: 'b2_4', title: "Reported Speech", category: "Structure", desc: "Backshifting.", examples: ["He said he liked it."], tip: "Conversion chart." },
+                { id: 'b2_5', title: "Future Continuous & Perfect", category: "Tenses", desc: "Actions in progress/finished.", examples: ["I will be flying."], tip: "Focus on 'By [time]'." },
+                { id: 'b2_6', title: "Passive (Advanced)", category: "Structure", desc: "Passive with modals.", examples: ["Must be done."], tip: "Formal writing." },
+                { id: 'b2_7', title: "Gerunds vs Infinitives", category: "Verbs", desc: "Verbs followed by -ing or to.", examples: ["Enjoy swimming."], tip: "Memorization required." },
+                { id: 'b2_8', title: "Articles (Advanced)", category: "Nouns", desc: "Geographical/Institution rules.", examples: ["Go to prison."], tip: "Focus on nuance." },
+                { id: 'b2_9', title: "Relative Clauses (Non-Defining)", category: "Structure", desc: "Extra info with commas.", examples: ["My mom, who is..."], tip: "Emphasize commas." },
+                { id: 'b2_10', title: "So / Such / Too / Enough", category: "Adverbs", desc: "Intensifiers.", examples: ["Such a good day."], tip: "Common error: 'Too much big'." }
+            ]
+        },
+        'C1': {
+            title: "Advanced Structure",
+            desc: "Stylistic variety and subtle meaning.",
+            topics: [
+                { id: 'c1_1', title: "Mixed Conditionals", category: "Structure", desc: "Combining 2nd and 3rd.", examples: ["If I hadn't eaten..."], tip: "Master standard forms first." },
+                { id: 'c1_2', title: "Inversion", category: "Structure", desc: "Negative adverbials.", examples: ["Never have I seen."], tip: "Formal speeches." },
+                { id: 'c1_3', title: "Cleft Sentences", category: "Structure", desc: "Changing focus.", examples: ["It was John who..."], tip: "Stress patterns." },
+                { id: 'c1_4', title: "Participle Clauses", category: "Structure", desc: "Shortening clauses.", examples: ["Walking down the street..."], tip: "Subject agreement." },
+                { id: 'c1_5', title: "Subjunctive Mood", category: "Structure", desc: "Formal demands.", examples: ["I suggest he be..."], tip: "US vs UK usage." },
+                { id: 'c1_6', title: "Advanced Phrasal Verbs", category: "Vocabulary", desc: "3-part verbs.", examples: ["Come up with."], tip: "Teach by theme." },
+                { id: 'c1_7', title: "Future in the Past", category: "Tenses", desc: "Was going to.", examples: ["I was going to call."], tip: "Excuses." },
+                { id: 'c1_8', title: "Wish / If only", category: "Structure", desc: "Regrets.", examples: ["I wish I were."], tip: "Like conditionals." },
+                { id: 'c1_9', title: "Verb Patterns", category: "Verbs", desc: "Object + Infinitive.", examples: ["Advise you to go."], tip: "Make vs Let." },
+                { id: 'c1_10', title: "Gradable vs Ungradable", category: "Adjectives", desc: "Intensifiers.", examples: ["Absolutely furious."], tip: "Pairing exercises." }
+            ]
+        },
+        'C2': {
+            title: "Mastery & Style",
+            desc: "Total control over tone and register.",
+            topics: [
+                { id: 'c2_1', title: "Ellipsis & Substitution", category: "Structure", desc: "Omitting words.", examples: ["So do I."], tip: "Natural fluency." },
+                { id: 'c2_2', title: "Nominalisation", category: "Style", desc: "Verbs to Nouns.", examples: ["The implementation of..."], tip: "Academic writing." },
+                { id: 'c2_3', title: "Hedgeing", category: "Style", desc: "Softening.", examples: ["It is arguably..."], tip: "Politeness." },
+                { id: 'c2_4', title: "Discourse Markers", category: "Structure", desc: "Complex arguments.", examples: ["Notwithstanding."], tip: "Cohesion." },
+                { id: 'c2_5', title: "Inversion (Conditionals)", category: "Structure", desc: "Dropping 'If'.", examples: ["Had I known..."], tip: "Business context." },
+                { id: 'c2_6', title: "Fronting", category: "Structure", desc: "Moving objects.", examples: ["Strange it was."], tip: "Storytelling." },
+                { id: 'c2_7', title: "Subtle Modals", category: "Modals", desc: "Dare, Needn't have.", examples: ["Needn't have done."], tip: "Fine meaning." },
+                { id: 'c2_8', title: "Multi-word Verbs", category: "Vocabulary", desc: "Complex compounds.", examples: ["Breakdown."], tip: "Stress patterns." },
+                { id: 'c2_9', title: "Stylistic Archaic", category: "Style", desc: "Whom, Thereof.", examples: ["The means whereby."], tip: "Legal/Formal." },
+                { id: 'c2_10', title: "Patterns of Comparison", category: "Adjectives", desc: "The... the...", examples: ["The more I study..."], tip: "Parallel structure." }
+            ]
+        }
+    };
+
+    const app = {
+        currentLevel: 'A1',
+        charts: {},
+        currentTopicData: null,
+
+        init: function() {
+            this.loadLevel('A1');
+            this.renderRoadmap();
+        },
+
+        showSection: function(sectionId) {
+            document.getElementById('view-curriculum').classList.add('hidden');
+            document.getElementById('view-roadmap').classList.add('hidden');
+            document.getElementById(`view-${sectionId}`).classList.remove('hidden');
+        },
+
+        loadLevel: function(level) {
+            this.currentLevel = level;
+
+            document.querySelectorAll('nav button').forEach(btn => {
+                btn.className = 'tab-inactive whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm w-1/6 text-center transition-colors';
+            });
+            document.getElementById(`tab-${level}`).className = 'tab-active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm w-1/6 text-center transition-colors';
+
+            const data = grammarData[level];
+            const contentDiv = document.getElementById('level-content');
+
+            contentDiv.innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="lg:col-span-2">
+                            <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
+                                <h2 class="text-2xl font-bold text-slate-800 mb-2">${level}: ${data.title}</h2>
+                                <p class="text-slate-600 mb-6">${data.desc}</p>
+
+                                <h3 class="font-bold text-slate-700 mb-4 uppercase text-xs tracking-wider">Curriculum Topics (In Order)</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    ${data.topics.map((t, index) => `
+                                        <div onclick="app.openModal('${level}', ${index})" class="topic-card bg-white p-4 rounded border border-stone-200 cursor-pointer group">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">${t.category}</span>
+                                                <div class="flex items-center gap-2">
+                                                    ${t.pdf ? '<span class="text-xs text-amber-600 font-bold bg-amber-50 px-1 rounded">PDF</span>' : ''}
+                                                    <span class="text-xs text-stone-400">#${index + 1}</span>
+                                                </div>
+                                            </div>
+                                            <h4 class="font-bold text-slate-800 group-hover:text-blue-700 transition-colors">${t.title}</h4>
+                                            <p class="text-sm text-slate-500 mt-1 truncate">${t.desc}</p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-1 space-y-6">
+                            <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
+                                <h3 class="font-bold text-slate-700 mb-4 text-center">Grammar Focus Distribution</h3>
+                                <div class="chart-container" style="height: 250px;">
+                                    <canvas id="levelChart"></canvas>
+                                </div>
+                                <p class="text-xs text-center text-stone-500 mt-4">Shows the balance of Tenses vs Structural rules for this level.</p>
+                            </div>
+
+                            <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100">
+                                <h3 class="font-bold text-indigo-900 mb-2">Teacher's Note</h3>
+                                <p class="text-sm text-indigo-800 leading-relaxed">
+                                    In level <strong>${level}</strong>, prioritize ${this.getLevelFocus(level)}.
+                                    Do not move to the next level until at least 80% of these concepts are fluent in spoken production.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+            setTimeout(() => this.renderLevelChart(level), 100);
+        },
+
+        getLevelFocus: function(level) {
+            const map = {
+                'A1': 'confidence and basic sentence construction',
+                'A2': 'past narration',
+                'B1': 'connecting ideas using perfect tenses',
+                'B2': 'hypothetical situations',
+                'C1': 'precision and stylistic variety',
+                'C2': 'cultural subtlety'
+            };
+            return map[level];
+        },
+
+        renderLevelChart: function(level) {
+            const topics = grammarData[level].topics;
+            const categories = {};
+            topics.forEach(t => {
+                categories[t.category] = (categories[t.category] || 0) + 1;
+            });
+
+            const ctx = document.getElementById('levelChart').getContext('2d');
+            if (this.charts.level) this.charts.level.destroy();
+
+            this.charts.level = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(categories),
+                    datasets: [{
+                        data: Object.values(categories),
+                        backgroundColor: ['#94a3b8', '#64748b', '#cbd5e1', '#e2e8f0', '#475569', '#334155'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } }
+                    }
+                }
+            });
+        },
+
+        renderRoadmap: function() {
+            const ctx = document.getElementById('roadmapChart').getContext('2d');
+            this.charts.roadmap = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Start', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+                    datasets: [{
+                        label: 'Cognitive Load',
+                        data: [0, 15, 30, 50, 75, 90, 100],
+                        borderColor: '#475569',
+                        backgroundColor: 'rgba(71, 85, 105, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#475569',
+                        pointBorderWidth: 2,
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true, title: { display: true, text: 'Complexity Score' } } }
+                }
+            });
+        },
+
+        openModal: function(level, index) {
+            const topic = grammarData[level].topics[index];
+            this.currentTopicData = topic;
+
+            document.getElementById('modal-title').innerText = topic.title;
+            document.getElementById('modal-category').innerText = topic.category;
+            document.getElementById('modal-desc').innerText = topic.desc;
+            document.getElementById('modal-tip').innerText = topic.tip;
+
+            const examplesList = document.getElementById('modal-examples');
+            examplesList.innerHTML = topic.examples.map(ex => `<li>${ex}</li>`).join('');
+
+            // PDF Logic
+            const pdfSection = document.getElementById('pdf-resource-section');
+            const pdfBtn = document.getElementById('pdf-link-btn');
+            const pdfMissing = document.getElementById('pdf-missing-badge');
+
+            if (topic.pdf) {
+                pdfBtn.href = topic.pdf;
+                pdfBtn.classList.remove('hidden');
+                pdfMissing.classList.add('hidden');
+                document.getElementById('pdf-status-text').innerText = topic.pdfTitle || "Available for download";
+            } else {
+                pdfBtn.classList.add('hidden');
+                pdfMissing.classList.remove('hidden');
+                document.getElementById('pdf-status-text').innerText = "Not available for this topic";
+            }
+
+            // Reset AI UI
+            document.getElementById('ai-output').classList.add('hidden');
+            document.getElementById('ai-content-box').classList.add('hidden');
+            document.getElementById('ai-error').classList.add('hidden');
+            document.getElementById('btn-lesson-plan').disabled = false;
+            document.getElementById('btn-examples').disabled = false;
+
+            document.getElementById('topic-modal').classList.remove('hidden');
+        },
+
+        closeModal: function() {
+            document.getElementById('topic-modal').classList.add('hidden');
+        },
+
+        setAiLoading: function(isLoading, text = "Consulting the AI...") {
+            const loadingDiv = document.getElementById('ai-loading');
+            const contentDiv = document.getElementById('ai-content-box');
+            const errorDiv = document.getElementById('ai-error');
+            const outputContainer = document.getElementById('ai-output');
+
+            if (isLoading) {
+                outputContainer.classList.remove('hidden');
+                loadingDiv.classList.remove('hidden');
+                document.getElementById('ai-loading-text').innerText = text;
+                contentDiv.classList.add('hidden');
+                errorDiv.classList.add('hidden');
+                document.getElementById('btn-lesson-plan').disabled = true;
+                document.getElementById('btn-examples').disabled = true;
+            } else {
+                loadingDiv.classList.add('hidden');
+                document.getElementById('btn-lesson-plan').disabled = false;
+                document.getElementById('btn-examples').disabled = false;
+            }
+        },
+
+        generateLessonPlan: async function() {
+            if (!this.currentTopicData) return;
+
+            this.setAiLoading(true, "Designing a custom lesson plan...");
+            const topic = this.currentTopicData;
+            const level = this.currentLevel;
+
+            const systemInstruction = "You are an expert ESL/EFL Curriculum Designer.";
+            const prompt = `Create a 45-minute lesson plan for ${level} students on: "${topic.title}". Context: ${topic.desc}. Key Difficulty: ${topic.tip}. Structured Markdown.`;
+
+            try {
+                const response = await callGemini(prompt, systemInstruction);
+                document.getElementById('ai-content').innerHTML = parseMarkdown(response);
+                document.getElementById('ai-content-box').classList.remove('hidden');
+            } catch (error) {
+                document.getElementById('ai-error').innerText = "Error generating lesson plan.";
+                document.getElementById('ai-error').classList.remove('hidden');
+            } finally {
+                this.setAiLoading(false);
+            }
+        },
+
+        generateMoreExamples: async function() {
+            if (!this.currentTopicData) return;
+
+            this.setAiLoading(true, "Creating new examples...");
+            const topic = this.currentTopicData;
+            const level = this.currentLevel;
+
+            const systemInstruction = "You are an English teacher.";
+            const prompt = `Generate 5 example sentences for "${topic.title}" (Level ${level}). Simple bulleted list in Markdown.`;
+
+            try {
+                const response = await callGemini(prompt, systemInstruction);
+                document.getElementById('ai-content').innerHTML = `<h3>✨ Fresh Examples for ${topic.title}</h3>` + parseMarkdown(response);
+                document.getElementById('ai-content-box').classList.remove('hidden');
+            } catch (error) {
+                document.getElementById('ai-error').innerText = "Error generating examples.";
+                document.getElementById('ai-error').classList.remove('hidden');
+            } finally {
+                this.setAiLoading(false);
+            }
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        app.init();
+    });
+
+</script>
+</body>
+</html>
