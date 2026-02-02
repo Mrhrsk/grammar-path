@@ -623,7 +623,7 @@
             const level = this.currentLevel;
 
             const systemInstruction = "You are an expert ESL/EFL Curriculum Designer.";
-            const prompt = `Create a 45-minute lesson plan for ${level} students on: "${topic.title}". Context: ${topic.desc}. Key Difficulty: ${topic.tip}. Structured Markdown.`;
+            const prompt = `Create a 60-minute lesson plan for ${level} students on: "${topic.title}". Context: ${topic.desc}. Key Difficulty: ${topic.tip}. Structured Markdown.`;
 
             try {
                 const response = await callGemini(prompt, systemInstruction);
