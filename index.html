@@ -34,7 +34,7 @@
         .tab-inactive { color: #64748b; border-bottom: 3px solid transparent; }
         .tab-inactive:hover { color: #334155; border-bottom: 3px solid #cbd5e1; }
 
-        /* AI Content Styling - Clean Text Focus */
+        /* AI Content Styling */
         .ai-content { line-height: 1.7; color: #334155; }
         .ai-content h3 { font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-top: 1.5rem; margin-bottom: 0.75rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.25rem; }
         .ai-content h4 { font-size: 1.1rem; font-weight: 600; color: #475569; margin-top: 1rem; margin-bottom: 0.5rem; }
@@ -172,55 +172,70 @@
 
 <footer class="bg-stone-100 border-t border-stone-200 mt-12 py-8">
     <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 GrammarPath. Designed for EFL/ESL Educators.</p>
+        <p>&copy; 2023 GrammarPath. Designed for EFL/ESL Educators.</p>
     </div>
 </footer>
 
 <script>
-    // ⬇️ PASTE YOUR API KEY HERE
+    // ⬇️ Вставьте ключ, который мы создали (AIza...)
     const apiKey = "AIzaSyDX8ygBrg8nDNrZOymSySMjL6wA7eUK0uY";
 
-    // ✅ FIXED: Switched to Stable Model (gemini-1.5-flash)
+    // ✅ FIXED: Robust Function with Automatic Fallback
+    // If Flash (404) fails, it tries Flash-001, then Pro.
     async function callGemini(prompt, systemInstruction = "") {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-        const payload = {
-            contents: [{ parts: [{ text: prompt }] }],
-            systemInstruction: { parts: [{ text: systemInstruction }] }
-        };
+        // List of models to try in case of 404 errors
+        const modelsToTry = [
+            "gemini-1.5-flash",
+            "gemini-1.5-flash-001",
+            "gemini-pro"
+        ];
 
-        const delays = [1000, 2000, 4000];
-        for (let i = 0; i <= delays.length; i++) {
+        const key = apiKey.trim(); // Remove accidental spaces
+
+        if (!key) {
+            throw new Error("API Key is missing!");
+        }
+
+        // Loop through models until one works
+        for (const model of modelsToTry) {
+            console.log(`Trying model: ${model}...`);
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemInstruction }] }
+            };
+
             try {
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                // If 404 (Model not found), try the next model in the loop
+                if (response.status === 404) {
+                    console.warn(`Model ${model} not found (404). Trying next...`);
+                    continue;
+                }
+
+                // If other error (like 400 or 403), stop and show it
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
                 const data = await response.json();
                 return data.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
+
             } catch (error) {
-                if (i === delays.length) throw error;
-                await new Promise(resolve => setTimeout(resolve, delays[i]));
+                // If it's the last model and still failing, verify throw
+                if (model === modelsToTry[modelsToTry.length - 1]) {
+                    throw error;
+                }
             }
         }
     }
 
-    // Markdown Parser (Still used for bolding, but we ask AI for HTML primarily now)
-    function parseMarkdown(text) {
-        let html = text
-            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-            .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
-            .replace(/^\s*[\-\*] (.*)/gim, '<ul><li>$1</li></ul>')
-            .replace(/<\/ul>\s*<ul>/gim, '')
-            .replace(/^\d+\. (.*)/gim, '<ol><li>$1</li></ol>')
-            .replace(/<\/ol>\s*<ol>/gim, '')
-            .replace(/\n/gim, '<br>');
-        return html;
-    }
-
+    // --- DATA STORE ---
     const grammarData = {
         'A1': {
             title: "The Foundation",
@@ -528,7 +543,6 @@
             }
         },
 
-        // ✅ CHANGED: Prompt now requests structured HTML instead of markdown tables
         generateLessonPlan: async function() {
             if (!this.currentTopicData) return;
 
@@ -546,12 +560,12 @@
 
             try {
                 const response = await callGemini(prompt, systemInstruction);
-                // No parsing needed - just inject the HTML
                 document.getElementById('ai-content').innerHTML = response;
                 document.getElementById('ai-content-box').classList.remove('hidden');
             } catch (error) {
-                document.getElementById('ai-error').innerText = "Error generating lesson plan. Please check API Key.";
+                document.getElementById('ai-error').innerText = error.message || "Error generating lesson plan.";
                 document.getElementById('ai-error').classList.remove('hidden');
+                console.error(error);
             } finally {
                 this.setAiLoading(false);
             }
@@ -573,8 +587,9 @@
                 document.getElementById('ai-content').innerHTML = `<h3>✨ Fresh Examples for ${topic.title}</h3>` + response;
                 document.getElementById('ai-content-box').classList.remove('hidden');
             } catch (error) {
-                document.getElementById('ai-error').innerText = "Error generating examples. Please check API Key.";
+                document.getElementById('ai-error').innerText = error.message || "Error generating examples.";
                 document.getElementById('ai-error').classList.remove('hidden');
+                console.error(error);
             } finally {
                 this.setAiLoading(false);
             }
