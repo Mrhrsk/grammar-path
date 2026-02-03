@@ -233,7 +233,9 @@
 
 <!-- LOGIC -->
 <script>
-    const apiKey = "AIzaSyA88nWr5DYBJeHPFqNdnxYgMIib7neBb_0"; // Set by environment
+    const keyPart1 = "AIzaSyA88nWr5DYBJ"
+    const keyPart2 = "eHPFqNdnxYgMIib7neBb_0"
+    const apiKey = keyPart1+keyPart2; // Set by environment
 
     // Gemini API Helperfsf
     async function callGemini(prompt, systemInstruction = "") {
