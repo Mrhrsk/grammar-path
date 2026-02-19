@@ -297,105 +297,884 @@
             title: "The Foundation",
             desc: "Survival English. Focus on concrete nouns, basic verbs, and essential sentence architecture.",
             topics: [
-                { id: 'a1_1', title: "Subject Pronouns & To Be", category: "Structure", desc: "I, You, He, She, It. Positive, Negative, Question.", examples: ["I am a teacher.", "Are you happy?"], tip: "Use hand gestures for pronouns.", pdf: "https://www.instagram.com" },
-                { id: 'a1_2', title: "Articles: A / An / The", category: "Nouns", desc: "Indefinite vs Definite.", examples: ["It is a cat.", "The cat is black."], tip: "Teach 'The' means 'You know which one'." },
-                { id: 'a1_3', title: "Plural Nouns (Regular)", category: "Nouns", desc: "Adding -s and -es.", examples: ["One dog, two dogs."], tip: "Focus on the /s/ vs /z/ sound." },
-                { id: 'a1_4', title: "Demonstratives", category: "Determiners", desc: "This, That, These, Those.", examples: ["This is my book."], tip: "Teach with distance: Near vs Far." },
-                { id: 'a1_5', title: "Object Pronouns", category: "Pronouns", desc: "Me, You, Him, Her, Us, Them.", examples: ["Call me.", "I like him."], tip: "Contrast: I love him (Subject vs Object)." },
-                { id: 'a1_6', title: "Imperatives", category: "Structure", desc: "Commands and Instructions.", examples: ["Sit down.", "Don't open the book."], tip: "Use TPR (Total Physical Response)." },
-                { id: 'a1_7', title: "Possessive Adjectives", category: "Adjectives", desc: "My, Your, His, Her, Our, Their.", examples: ["This is my pen."], tip: "Common error: 'I name is...' vs 'My name is'." },
-                { id: 'a1_8', title: "Present Simple (Positive)", category: "Tenses", desc: "Habits and facts.", examples: ["I live in Spain."], tip: "The 'Third Person S' is the hardest part." },
-                { id: 'a1_9', title: "Present Simple (Neg & Q)", category: "Tenses", desc: "Don't / Doesn't / Do / Does.", examples: ["I don't know.", "Do you like pizza?"], tip: "The main verb returns to base form." },
-                { id: 'a1_10', title: "Wh- Questions", category: "Structure", desc: "Who, What, Where, When.", examples: ["Where do you live?"], tip: "Structure: Q-word + Aux + Sub + Verb." },
-                { id: 'a1_11', title: "Prepositions of Place", category: "Prepositions", desc: "In, On, Under, Next to, Between.", examples: ["The cat is under the table."], tip: "Use physical objects." },
-                { id: 'a1_12', title: "There is / There are", category: "Structure", desc: "Existence.", examples: ["There is a problem."], tip: "Connect with prepositions." },
-                { id: 'a1_13', title: "Can / Can't (Ability)", category: "Modals", desc: "Basic ability.", examples: ["I can swim."], tip: "Pronunciation: 'Can' is usually unstressed /kən/." }
+                {
+                    id: 'a1_1',
+                    title: "The Verb 'To Be' (am / is / are)",
+                    category: "Tenses",
+                    desc: "Affirmative, negative, and question forms. Contractions: I'm, you're, he's. Uses: identity, nationality, age, profession, location, description.",
+                    examples: ["I am a teacher.", "She is not happy.", "Are you a student? — Yes, I am."],
+                    tip: "Contractions are the first fluency hurdle. Drill them from day one. 'I am not' → 'I'm not' is the only contraction that doesn't drop 'not'."
+                },
+                {
+                    id: 'a1_2',
+                    title: "Personal Pronouns (Subject)",
+                    category: "Pronouns",
+                    desc: "I, You, He, She, It, We, They. Understanding which pronoun to use and pronoun–verb agreement with 'to be'.",
+                    examples: ["I am cold.", "He is my brother.", "They are students."],
+                    tip: "Use gestures and pictures for 'he/she/they' — pronouns are abstract and students confuse gender pronouns early on."
+                },
+                {
+                    id: 'a1_3',
+                    title: "Nouns: Singular & Plural (Regular)",
+                    category: "Nouns",
+                    desc: "Common nouns, proper nouns. Regular plural rules: add -s / -es. Phonetic rule: /s/ after voiceless, /z/ after voiced, /ɪz/ after sibilants.",
+                    examples: ["one cat → two cats", "one bus → two buses", "one dog → two dogs"],
+                    tip: "Focus on the three sounds of -s: /s/ (cats), /z/ (dogs), /ɪz/ (buses). Native speakers do this automatically — learners need to hear it consciously."
+                },
+                {
+                    id: 'a1_4',
+                    title: "Nouns: Irregular Plurals",
+                    category: "Nouns",
+                    desc: "High-frequency irregular forms that must be memorised: man/men, woman/women, child/children, person/people, foot/feet, tooth/teeth, mouse/mice, fish/fish, sheep/sheep.",
+                    examples: ["One child, three children.", "One person, many people.", "One foot, two feet."],
+                    tip: "Teach these in context, not as a list. 'How many people are in your family?' is more memorable than a table."
+                },
+                {
+                    id: 'a1_5',
+                    title: "Articles: A / An / The",
+                    category: "Determiners",
+                    desc: "A before consonant sounds. An before vowel sounds. The for specific/known nouns. Zero article for general plural/uncountable nouns.",
+                    examples: ["It is a cat.", "She is an artist.", "The cat is black.", "I like cats."],
+                    tip: "'The' means 'you know which one I mean'. This single concept unlocks most article decisions."
+                },
+                {
+                    id: 'a1_6',
+                    title: "Demonstratives: This / That / These / Those",
+                    category: "Determiners",
+                    desc: "This/these = near. That/those = far. Singular vs plural distinction. Used as both adjectives and pronouns.",
+                    examples: ["This is my book.", "Those are his shoes.", "Is that your bag?"],
+                    tip: "Teach with distance. Stand near and far from objects in the classroom. The spatial metaphor makes it stick."
+                },
+                {
+                    id: 'a1_7',
+                    title: "Possessive Adjectives",
+                    category: "Adjectives",
+                    desc: "My, Your, His, Her, Its, Our, Their. Comes before the noun. Never changes form based on the noun.",
+                    examples: ["This is my pen.", "What is her name?", "Their house is big."],
+                    tip: "Classic error: 'I name is...' → 'My name is...'. Drill this phrase relentlessly in early lessons."
+                },
+                {
+                    id: 'a1_8',
+                    title: "Possessive 's",
+                    category: "Nouns",
+                    desc: "Apostrophe -s to show ownership. Distinction between 's (possession) and 's (contraction of 'is').",
+                    examples: ["John's car.", "The teacher's desk.", "That's Maria's bag."],
+                    tip: "Distinguish: 'John's tired' (= John is) vs 'John's car' (= belonging to John). Context always clarifies."
+                },
+                {
+                    id: 'a1_9',
+                    title: "Object Pronouns",
+                    category: "Pronouns",
+                    desc: "Me, You, Him, Her, It, Us, Them. Used after verbs and prepositions. Contrast with subject pronouns.",
+                    examples: ["Call me.", "I like him.", "She gave it to us."],
+                    tip: "Contrast pairs: I/me, he/him, she/her, we/us, they/them. 'I love him' vs 'He loves me' — word order changes everything."
+                },
+                {
+                    id: 'a1_10',
+                    title: "Imperatives",
+                    category: "Structure",
+                    desc: "Affirmative: base verb (Sit down!). Negative: Don't + base verb (Don't run!). Used for commands, instructions, requests, directions.",
+                    examples: ["Open your book.", "Don't be late.", "Please sit down."],
+                    tip: "Use TPR (Total Physical Response). Students respond to instructions physically before they speak. Builds comprehension fast."
+                },
+                {
+                    id: 'a1_11',
+                    title: "Present Simple (Positive)",
+                    category: "Tenses",
+                    desc: "Habits, routines, facts, permanent situations. Third person singular adds -s/-es. Spelling rules for -es and -ies.",
+                    examples: ["I live in Spain.", "She works every day.", "He watches TV at night."],
+                    tip: "The third-person -s is the most forgotten rule in English. Create drills that isolate it: 'He ___s, She ___s, It ___s.'"
+                },
+                {
+                    id: 'a1_12',
+                    title: "Present Simple (Negative & Question)",
+                    category: "Tenses",
+                    desc: "Negative: don't / doesn't + base verb. Questions: Do / Does + subject + base verb. Short answers. The main verb returns to base form with auxiliaries.",
+                    examples: ["I don't know.", "She doesn't like coffee.", "Do you speak English? — Yes, I do."],
+                    tip: "Critical point: 'Does she LIKES?' → 'Does she LIKE?' The -s moves to 'does'. Students keep adding it to the main verb."
+                },
+                {
+                    id: 'a1_13',
+                    title: "Adverbs of Frequency",
+                    category: "Adverbs",
+                    desc: "Always, usually, often, sometimes, rarely, never. Placement: before the main verb, after 'to be'. Use with present simple for routines.",
+                    examples: ["I always drink coffee.", "She is never late.", "They sometimes go to the cinema."],
+                    tip: "Draw a percentage scale: always (100%) → never (0%). Students love this visual."
+                },
+                {
+                    id: 'a1_14',
+                    title: "Present Continuous",
+                    category: "Tenses",
+                    desc: "Form: am/is/are + verb-ing. Use: actions happening right now, at this moment. Spelling rules: doubling consonants (sit→sitting), dropping -e (write→writing).",
+                    examples: ["I am reading.", "She is not watching TV.", "Are they playing outside?"],
+                    tip: "Start with a live demonstration: 'Look! I am writing on the board. Now I am walking.' Present continuous is highly teachable in the classroom."
+                },
+                {
+                    id: 'a1_15',
+                    title: "Wh- Questions",
+                    category: "Structure",
+                    desc: "What, Where, Who, When, How. Structure: Wh-word + auxiliary + subject + verb. Common question phrases for everyday interaction.",
+                    examples: ["Where do you live?", "What is your name?", "How old are you?"],
+                    tip: "Structure drill: Q-word → Aux → Subject → Verb. Write it on the board as a formula. Students need the formula before they can be creative."
+                },
+                {
+                    id: 'a1_16',
+                    title: "Prepositions of Place",
+                    category: "Prepositions",
+                    desc: "In, on, at, next to, behind, in front of, under, between, above, below. Used with 'to be' and 'there is/are'.",
+                    examples: ["The cat is under the table.", "My school is next to the park.", "Put it in the box."],
+                    tip: "Use physical objects in the classroom. Pick up a pen — 'The pen is ON the table. The pen is IN the bag.' Concrete before abstract."
+                },
+                {
+                    id: 'a1_17',
+                    title: "There is / There are",
+                    category: "Structure",
+                    desc: "Describing existence. There is + singular/uncountable. There are + plural. Negative: There isn't / There aren't. Questions: Is there...? Are there...?",
+                    examples: ["There is a cat in the garden.", "There are three books on the desk.", "Is there a bank near here?"],
+                    tip: "Link to prepositions immediately. 'There is a cat IN the garden.' Students need both structures together to form real sentences."
+                },
+                {
+                    id: 'a1_18',
+                    title: "Can / Can't (Ability & Permission)",
+                    category: "Modals",
+                    desc: "Expressing ability and basic permission. No -s in third person. Questions: Can you...? Short answers: Yes, I can / No, I can't.",
+                    examples: ["I can swim.", "She can't drive.", "Can you help me?"],
+                    tip: "Pronunciation: 'Can' is almost always unstressed /kən/ in natural speech. 'Can't' is always stressed. This difference is essential for listening."
+                },
+                {
+                    id: 'a1_19',
+                    title: "Have / Have Got",
+                    category: "Verbs",
+                    desc: "Expressing possession. I have / I have got. She has / She has got. Negatives: don't have / haven't got. Questions: Do you have? / Have you got?",
+                    examples: ["I have a dog.", "She has got blue eyes.", "Have you got a pen?"],
+                    tip: "British English prefers 'have got'; American English prefers 'have'. Neither is wrong, but be consistent within your teaching context."
+                },
+                {
+                    id: 'a1_20',
+                    title: "Like + -ing",
+                    category: "Verbs",
+                    desc: "Expressing preferences with like/love/hate + gerund. Third-person -s. Negative and question forms.",
+                    examples: ["I like reading.", "She loves dancing.", "Do you like cooking?"],
+                    tip: "This is the first introduction to the verb + -ing pattern. It becomes the foundation for the full gerund system later."
+                },
+                {
+                    id: 'a1_21',
+                    title: "Numbers, Dates & Time",
+                    category: "Vocabulary",
+                    desc: "Cardinal numbers 1–1,000+. Ordinal numbers 1st–31st. Telling the time. Days and months. Date formats.",
+                    examples: ["It's half past three.", "My birthday is on the 15th of July.", "It costs forty-five pounds."],
+                    tip: "Telling the time is surprisingly complex. Teach digital time first (it's 3:15), then analogue (quarter past three). Digital is more universally understood now."
+                },
+                {
+                    id: 'a1_22',
+                    title: "Prepositions of Time: At / On / In",
+                    category: "Prepositions",
+                    desc: "At + clock time / holidays (at 3pm, at Christmas). On + days and dates (on Monday, on 5th June). In + months, years, seasons (in July, in 2024, in the morning).",
+                    examples: ["At 8 o'clock.", "On Friday.", "In December."],
+                    tip: "The Triangle Method: In (biggest: year/month) → On (medium: day/date) → At (smallest: time). Most languages have one word for all three — this distinction takes practice."
+                },
+                {
+                    id: 'a1_23',
+                    title: "Basic Adjectives",
+                    category: "Adjectives",
+                    desc: "Attributive position (before noun) and predicative position (after 'be'). Size, colour, age, quality, nationality adjectives. Adjectives never add -s for plural.",
+                    examples: ["A big red car.", "The car is big and red.", "She is young and tall."],
+                    tip: "Adjectives don't change for plural — a very common error from Romance language speakers ('two reds cars')."
+                },
+                {
+                    id: 'a1_24',
+                    title: "Basic Conjunctions: And / But / Or",
+                    category: "Structure",
+                    desc: "And — addition. But — contrast. Or — alternatives. Joining words, phrases, and simple clauses.",
+                    examples: ["I have a cat and a dog.", "I like tea but not coffee.", "Do you want tea or coffee?"],
+                    tip: "These three words transform students from one-clause robots into actual communicators. Teach them in the first week."
+                }
             ]
         },
         'A2': {
             title: "Expanding Horizons",
-            desc: "Describing the past, the future, and linking ideas together.",
+            desc: "Describing the past, the future, comparisons, and a wider range of modals.",
             topics: [
-                { id: 'a2_1', title: "Past Simple (To Be)", category: "Tenses", desc: "Was / Were.", examples: ["I was tired yesterday."], tip: "Teach this before regular verbs." },
-                { id: 'a2_2', title: "Past Simple (Regular)", category: "Tenses", desc: "Adding -ed.", examples: ["I walked home."], tip: "Crucial: The 3 pronunciations of -ed (t/d/id)." },
-                { id: 'a2_3', title: "Past Simple (Irregular)", category: "Tenses", desc: "Top 20 irregular verbs.", examples: ["I went (go).", "I saw (see)."], tip: "Group by sound (sing/sang, ring/rang)." },
-                { id: 'a2_4', title: "Countable vs Uncountable", category: "Nouns", desc: "Some, Any, Much, Many.", examples: ["Some water.", "Many friends."], tip: "Use food vocabulary." },
-                { id: 'a2_5', title: "Comparatives & Superlatives", category: "Adjectives", desc: "Better, Bigger, The Best.", examples: ["She is taller than me."], tip: "Don't forget 'The' in superlatives." },
-                { id: 'a2_6', title: "Present Continuous", category: "Tenses", desc: "Actions happening now.", examples: ["I am studying."], tip: "Contrast with Present Simple (Habit vs Now)." },
-                { id: 'a2_7', title: "Modals of Obligation", category: "Modals", desc: "Have to, Must, Should.", examples: ["You must wear a uniform."], tip: "Must = internal rule; Have to = external rule." },
-                { id: 'a2_8', title: "Coordinating Conjunctions", category: "Structure", desc: "And, But, Or, So, Because.", examples: ["I was sick, so I stayed home."], tip: "Teaching 'Cause and Effect'." },
-                { id: 'a2_9', title: "Future: Going to", category: "Tenses", desc: "Plans and predictions based on evidence.", examples: ["It is going to rain."], tip: "Contrast with 'Will'." },
-                { id: 'a2_10', title: "Possessive 's", category: "Nouns", desc: "Ownership.", examples: ["John's car."], tip: "The difference between 's (is) and 's (possession)." },
-                { id: 'a2_11', title: "Adverbs of Manner", category: "Adverbs", desc: "Slowly, Quickly, Well.", examples: ["He speaks English well."], tip: "Position is usually at the end." },
-                { id: 'a2_12', title: "Prepositions of Time", category: "Prepositions", desc: "In (Month), On (Day), At (Time).", examples: ["At 5 o'clock."], tip: "The Triangle Method (General to Specific)." }
+                {
+                    id: 'a2_1',
+                    title: "Past Simple: To Be (was / were)",
+                    category: "Tenses",
+                    desc: "Affirmative, negative, questions. Was (I/he/she/it) vs were (you/we/they). Short answers. Time expressions: yesterday, last week, ago.",
+                    examples: ["I was tired yesterday.", "Were you at school?", "They weren't at home."],
+                    tip: "Teach was/were before regular and irregular verbs. It is the simpler system and builds the concept of past time first."
+                },
+                {
+                    id: 'a2_2',
+                    title: "Past Simple: Regular Verbs",
+                    category: "Tenses",
+                    desc: "Adding -ed. Spelling rules: double consonant (stop→stopped), -y→-ied (study→studied), silent -e (love→loved). Three pronunciations: /t/, /d/, /ɪd/.",
+                    examples: ["I walked home.", "She studied all night.", "They stopped the car."],
+                    tip: "The 3 sounds of -ed are crucial for listening comprehension. /ɪd/ only after /t/ and /d/ — everything else is /t/ or /d/ depending on voicing."
+                },
+                {
+                    id: 'a2_3',
+                    title: "Past Simple: Irregular Verbs",
+                    category: "Tenses",
+                    desc: "The top 50 high-frequency irregular verbs. Negative: didn't + base verb (NOT the irregular form). Questions: Did + subject + base verb.",
+                    examples: ["I went (go).", "She saw (see).", "Did you eat? — No, I didn't eat."],
+                    tip: "Group by sound patterns (sing/sang/sung, ring/rang/rung, swim/swam/swum). Students remember patterns far better than random lists."
+                },
+                {
+                    id: 'a2_4',
+                    title: "Past Continuous",
+                    category: "Tenses",
+                    desc: "Form: was/were + verb-ing. Action in progress at a past moment. Interrupted actions (past continuous + when + past simple). Simultaneous actions with 'while'.",
+                    examples: ["I was sleeping when the phone rang.", "While she was cooking, he was reading.", "What were you doing at 8pm?"],
+                    tip: "The timeline is everything here. Draw two lines: the long background action (continuous) interrupted by the short sudden action (simple)."
+                },
+                {
+                    id: 'a2_5',
+                    title: "Future: Going to",
+                    category: "Tenses",
+                    desc: "Form: am/is/are + going to + base verb. Use for plans/intentions already decided, and predictions based on present evidence.",
+                    examples: ["I'm going to visit Paris next year.", "Look at those clouds — it's going to rain!"],
+                    tip: "The evidence-based prediction is the KEY use that distinguishes 'going to' from 'will'. Look at those clouds → going to. Not based on evidence → will."
+                },
+                {
+                    id: 'a2_6',
+                    title: "Future: Will",
+                    category: "Tenses",
+                    desc: "Form: will + base verb (same for all persons). Spontaneous decisions, predictions without evidence, offers, promises, requests. Contraction: 'll. Negative: won't.",
+                    examples: ["I'll help you! (spontaneous offer)", "I think it will be a great party.", "Will you marry me?"],
+                    tip: "The moment of decision test: if the decision is made at the moment of speaking, use 'will'. If already decided, use 'going to'."
+                },
+                {
+                    id: 'a2_7',
+                    title: "Comparatives & Superlatives",
+                    category: "Adjectives",
+                    desc: "Short adj + -er + than. The + short adj + -est. More/most + long adjective. Irregular: good/better/best, bad/worse/worst, far/further/furthest. As...as comparisons.",
+                    examples: ["She is taller than her brother.", "This is the most expensive hotel.", "He isn't as fast as her."],
+                    tip: "Don't forget 'the' in superlatives. And never 'more taller' or 'more better' — double comparatives are a persistent error."
+                },
+                {
+                    id: 'a2_8',
+                    title: "Countable & Uncountable Nouns",
+                    category: "Nouns",
+                    desc: "Countable: can be counted, have plurals. Uncountable: always singular, no article 'a'. High-frequency uncountables: water, information, advice, money, news, furniture, luggage, traffic, research, bread.",
+                    examples: ["Some water (not 'a water').", "How many friends? / How much money?", "I need some advice."],
+                    tip: "Teach uncountables as a 'surprise' category. 'News' is uncountable — The news IS good (not 'are'). 'Furniture', 'luggage' — these feel countable but aren't."
+                },
+                {
+                    id: 'a2_9',
+                    title: "Quantifiers",
+                    category: "Determiners",
+                    desc: "Some/any (affirmative/negative/questions). Many/a few/several (countable). Much/a little (uncountable). A lot of/lots of/plenty of/enough/no (both). How many? / How much?",
+                    examples: ["There is some milk.", "I don't have any friends here.", "There are a few options."],
+                    tip: "Some in affirmative offers ('Would you like some coffee?'). Any in negatives and questions — but 'some' in offers because you expect the answer to be 'yes'."
+                },
+                {
+                    id: 'a2_10',
+                    title: "Adverbs of Manner",
+                    category: "Adverbs",
+                    desc: "Formation with -ly (quickly, carefully). Irregular adverbs: fast/fast, good/well, hard/hard, early/early. Placement after the verb or after the object.",
+                    examples: ["He speaks English well.", "She drives carefully.", "They worked hard."],
+                    tip: "'Good' is an adjective; 'well' is the adverb. 'I did good' vs 'I did well' — a very common error even among advanced learners."
+                },
+                {
+                    id: 'a2_11',
+                    title: "Modals of Obligation & Advice",
+                    category: "Modals",
+                    desc: "Must (strong internal obligation). Have to (external obligation). Mustn't (prohibition). Don't have to (no obligation — NOT the same as 'mustn't'). Should/shouldn't (advice).",
+                    examples: ["You must wear a seatbelt.", "I have to work on Saturdays.", "You don't have to come.", "You should see a doctor."],
+                    tip: "The 'must' vs 'have to' distinction: Must = the speaker imposes it. Have to = the rule/situation imposes it. 'Don't have to' = it's optional, NOT forbidden."
+                },
+                {
+                    id: 'a2_12',
+                    title: "Modals of Possibility: May / Might / Could",
+                    category: "Modals",
+                    desc: "May and might for present/future possibility. Could for possibility or past ability. Might = slightly weaker possibility than may.",
+                    examples: ["It might rain later.", "She may be at home.", "He could be right."],
+                    tip: "Teach as a certainty scale: must (90-100%) → should (80%) → may (50%) → might (30-40%) → can't (0%). Students love percentages."
+                },
+                {
+                    id: 'a2_13',
+                    title: "Prepositions of Movement",
+                    category: "Prepositions",
+                    desc: "To, from, into, out of, through, across, along, past, up, down, towards, around. Used with verbs of movement.",
+                    examples: ["She walked into the room.", "Go through the tunnel.", "Walk along the river."],
+                    tip: "Use maps and diagrams. Draw arrows. Movement prepositions are highly visual and kinesthetic — act them out."
+                },
+                {
+                    id: 'a2_14',
+                    title: "Zero Conditional",
+                    category: "Structure",
+                    desc: "If + present simple, present simple. General truths, scientific facts, and things that are always true.",
+                    examples: ["If you heat water to 100°C, it boils.", "If it rains, the ground gets wet."],
+                    tip: "Zero conditional = a universal fact. The 'if' can be replaced by 'when': 'When you heat water to 100°C, it boils.' If both sentences feel true at all times, it's zero."
+                },
+                {
+                    id: 'a2_15',
+                    title: "First Conditional",
+                    category: "Structure",
+                    desc: "If + present simple, will + base verb. Real and possible future situations. Unless = if...not. Variations with can/may/might in the result clause.",
+                    examples: ["If it rains, I'll stay at home.", "Unless you hurry, you'll miss the bus.", "If I find your phone, I'll call you."],
+                    tip: "Remind students the 'if' clause uses present simple — NOT will. 'If it will rain...' is a very common error."
+                },
+                {
+                    id: 'a2_16',
+                    title: "Coordinating Conjunctions",
+                    category: "Structure",
+                    desc: "And (addition), but (contrast), or (alternative), so (result), because (reason). Joining clauses to form compound sentences.",
+                    examples: ["I was sick, so I stayed home.", "She's tired but she won't stop working.", "I stayed inside because it was raining."],
+                    tip: "'Because' answers 'Why?' — teach it as a cause-and-effect tool. 'So' gives the result. These two together cover most of a learner's daily explanatory needs."
+                },
+                {
+                    id: 'a2_17',
+                    title: "Verb + Infinitive vs Verb + -ing (Intro)",
+                    category: "Verbs",
+                    desc: "Verbs followed by to-infinitive: want, need, decide, plan, hope, would like, agree, promise, refuse, offer, learn. Verbs followed by -ing: enjoy, love, like, hate, finish, stop, avoid, mind, consider, keep.",
+                    examples: ["I want to leave.", "She enjoys reading.", "He decided to stay."],
+                    tip: "There is no grammatical logic — these must be learned. Organise them into coloured lists and revisit often. Frequency of exposure is the only reliable teacher."
+                },
+                {
+                    id: 'a2_18',
+                    title: "Reflexive Pronouns",
+                    category: "Pronouns",
+                    desc: "Myself, yourself, himself, herself, itself, ourselves, yourselves, themselves. Reflexive use (subject = object). Emphatic use (without help). By + reflexive (alone).",
+                    examples: ["She hurt herself.", "He built the house himself.", "I did it by myself."],
+                    tip: "'By myself' means alone. 'I myself' means without help. Subtle but important distinction: 'I lived alone' vs 'I painted the house myself'."
+                },
+                {
+                    id: 'a2_19',
+                    title: "Present Perfect: Introduction",
+                    category: "Tenses",
+                    desc: "Form: have/has + past participle. Use for life experiences (no specific time). Use for recent events with present relevance. Ever, never, already, yet, just.",
+                    examples: ["Have you ever been to Japan?", "I've already eaten.", "She hasn't finished yet.", "He's just arrived."],
+                    tip: "Never use the present perfect with a specific past time. 'I have seen it yesterday' → WRONG. The moment you say 'yesterday', switch to past simple."
+                },
+                {
+                    id: 'a2_20',
+                    title: "Expressing Preferences",
+                    category: "Verbs",
+                    desc: "Prefer + -ing / noun to -ing / noun. Would prefer + infinitive. Would like + infinitive. Love/like/enjoy/hate + noun or -ing.",
+                    examples: ["I prefer swimming to running.", "I'd prefer to stay at home.", "Would you like to come?"],
+                    tip: "'Would like' is NOT the same as 'like'. 'I like dancing' = general truth. 'I'd like to dance' = specific desire right now. Don't confuse them."
+                }
             ]
         },
         'B1': {
             title: "The Bridge to Fluency",
-            desc: "Connecting the past to the present, hypothetical basics, and duration.",
+            desc: "Connecting the past to the present, hypothetical basics, reporting, and duration.",
             topics: [
-                { id: 'b1_1', title: "Present Perfect Simple", category: "Tenses", desc: "Experience and Results.", examples: ["I have been to Paris.", "I have lost my keys."], tip: "Don't say 'When'. Focus on 'Result'." },
-                { id: 'b1_2', title: "Present Perfect Continuous", category: "Tenses", desc: "Duration of unfinished actions.", examples: ["I have been waiting for 2 hours."], tip: "Use with 'How long'." },
-                { id: 'b1_3', title: "For vs Since", category: "Prepositions", desc: "Period vs Point in time.", examples: ["For 2 years.", "Since 2010."], tip: "The 'Calendar' visual aid." },
-                { id: 'b1_4', title: "Zero & First Conditional", category: "Structure", desc: "Facts and Real Possibilities.", examples: ["If you heat ice, it melts.", "If it rains, I'll stay home."], tip: "Structure: If + Present... Future." },
-                { id: 'b1_5', title: "Gerunds vs Infinitives", category: "Verbs", desc: "Verb patterns.", examples: ["I enjoy swimming.", "I want to go."], tip: "Lists must be memorized." },
-                { id: 'b1_6', title: "Future Forms Contrast", category: "Tenses", desc: "Will vs Going to vs Present Cont.", examples: ["I'll help (offer).", "I'm meeting (arrangement)."], tip: "Focus on 'Spontaneous' vs 'Arranged'." },
-                { id: 'b1_7', title: "Passive Voice (Simple)", category: "Structure", desc: "Object focus.", examples: ["This room is cleaned every day."], tip: "Explain 'Why' we use it (Agent unknown)." },
-                { id: 'b1_8', title: "Used to", category: "Structure", desc: "Past habits that stopped.", examples: ["I used to have long hair."], tip: "Negative: I didn't use to." },
-                { id: 'b1_9', title: "Defining Relative Clauses", category: "Structure", desc: "Who, Which, That (Essential info).", examples: ["The man who called me."], tip: "No commas." },
-                { id: 'b1_10', title: "Modals of Deduction (Pres)", category: "Modals", desc: "Must be, Can't be, Might be.", examples: ["He must be tired."], tip: "The logic ladder (100% to 50% certainty)." },
-                { id: 'b1_11', title: "Quantifiers", category: "Determiners", desc: "A few, A little, Plenty, None.", examples: ["A few friends."], tip: "Few vs A few (Negative vs Positive)." },
-                { id: 'b1_12', title: "Tag Questions", category: "Structure", desc: "Confirming info.", examples: ["It's nice, isn't it?"], tip: "Intonation: Up (Real question) vs Down (Chat)." }
+                {
+                    id: 'b1_1',
+                    title: "Present Perfect: Extended Uses",
+                    category: "Tenses",
+                    desc: "Past actions with present results. Unfinished time periods (I've lived here for 10 years — I still live here). For + duration vs Since + point in time. How long? questions.",
+                    examples: ["I've lost my keys (result: I can't get in).", "She has worked here since 2018.", "How long have you been learning English?"],
+                    tip: "The hardest concept: present perfect describes a past event through the lens of the PRESENT. The result or relevance is NOW. Draw a timeline with an arrow reaching 'now'."
+                },
+                {
+                    id: 'b1_2',
+                    title: "Present Perfect Continuous",
+                    category: "Tenses",
+                    desc: "Form: have/has + been + verb-ing. Action that started in the past and is still continuing. Recent activity with visible results. Emphasis on duration and process.",
+                    examples: ["I have been studying for three hours.", "You look tired — have you been running?", "She has been waiting for 45 minutes."],
+                    tip: "Perfect simple = result/completion ('I've written the report — it's done'). Perfect continuous = duration/process ('I've been writing all day — it's exhausting'). The difference is subtle but crucial."
+                },
+                {
+                    id: 'b1_3',
+                    title: "For vs Since",
+                    category: "Prepositions",
+                    desc: "For + duration of time (for 3 days, for a long time, for ages). Since + specific point in time (since Monday, since 2010, since I was a child).",
+                    examples: ["I have known her for ten years.", "She has been here since Tuesday.", "He hasn't eaten since breakfast."],
+                    tip: "Quick test: if you can say 'a period of ___', use 'for'. If you can say 'starting at ___', use 'since'."
+                },
+                {
+                    id: 'b1_4',
+                    title: "Past Perfect Simple",
+                    category: "Tenses",
+                    desc: "Form: had + past participle. The earlier of two past events. Often with: when, before, after, by the time, already, just, never (before that moment).",
+                    examples: ["When I arrived, the train had already left.", "She had never eaten sushi before that trip.", "By the time we got there, it had stopped raining."],
+                    tip: "Draw a timeline with two points in the past. Past perfect is always the EARLIER action. When the order is obvious from context (before/after), past perfect can sometimes be omitted."
+                },
+                {
+                    id: 'b1_5',
+                    title: "Past Perfect Continuous",
+                    category: "Tenses",
+                    desc: "Form: had been + verb-ing. Action in progress before a specific past point. Gives the background duration or reason for a past state.",
+                    examples: ["She had been waiting for an hour when he finally arrived.", "He was exhausted because he had been working all night.", "How long had they been living there before the fire?"],
+                    tip: "Use for explaining the 'why' of a past situation. 'She was covered in paint because she had been decorating.' The continuous explains the visible evidence."
+                },
+                {
+                    id: 'b1_6',
+                    title: "Zero & First Conditional (Review)",
+                    category: "Structure",
+                    desc: "Full review of both conditionals with focus on contrast. Zero = universal truth (any time). First = specific real possibility (future). Unless, as long as, provided that as alternatives to 'if'.",
+                    examples: ["If you study, you improve (zero).", "If you study tonight, you'll pass (first).", "Unless you study, you'll fail."],
+                    tip: "The key difference is time and reality: zero conditional is timeless; first conditional refers to a specific possible future event."
+                },
+                {
+                    id: 'b1_7',
+                    title: "Second Conditional",
+                    category: "Structure",
+                    desc: "Form: If + past simple, would + base verb. Imaginary, unlikely, or hypothetical present/future situations. 'If I were you' (subjunctive were for all persons).",
+                    examples: ["If I had more money, I would travel the world.", "If I were you, I would apologise.", "What would you do if you lost your job?"],
+                    tip: "'Were' (not 'was') is technically correct for all persons in the second conditional, especially in formal English. But 'was' is common in informal speech — don't penalise it heavily."
+                },
+                {
+                    id: 'b1_8',
+                    title: "Third Conditional",
+                    category: "Structure",
+                    desc: "Form: If + past perfect, would have + past participle. Imaginary past situations, regrets, criticism. Could have / might have / should have instead of 'would have'.",
+                    examples: ["If I had studied harder, I would have passed.", "If you had called me, I could have helped.", "She might have stayed if you had asked."],
+                    tip: "The pronunciation of 'would've', 'could've', 'should've' in natural speech is critical for listening. Many students hear 'would of' — spend time on this."
+                },
+                {
+                    id: 'b1_9',
+                    title: "Reported Speech",
+                    category: "Structure",
+                    desc: "Backshift of tenses: present simple→past simple, present continuous→past continuous, will→would, can→could, have/has→had. Changes to pronouns, time, and place references. Reporting statements, questions, and commands.",
+                    examples: ["'I am tired' → She said she was tired.", "'Are you coming?' → He asked if I was coming.", "'Call me' → She told him to call her."],
+                    tip: "Time marker changes are often forgotten: today→that day, now→then, tomorrow→the next day, yesterday→the day before. Make a reference card."
+                },
+                {
+                    id: 'b1_10',
+                    title: "Reporting Verbs",
+                    category: "Verbs",
+                    desc: "Say vs tell (tell always needs an object: told ME). Extended verbs: ask, explain, suggest, recommend, warn, promise, offer, refuse, admit, deny, claim, insist.",
+                    examples: ["She told me to wait.", "He admitted he had made a mistake.", "They suggested going to a different restaurant."],
+                    tip: "Say + (that): She said she was ready. Tell + person + (that): She told me she was ready. This say/tell distinction is tested constantly and confused constantly."
+                },
+                {
+                    id: 'b1_11',
+                    title: "Passive Voice: Introduction",
+                    category: "Structure",
+                    desc: "Form: be + past participle. Present simple, past simple, present continuous, future (will), present perfect passive. Using 'by' for the agent. When to omit the agent.",
+                    examples: ["Coffee is grown in Brazil.", "The Eiffel Tower was built in 1889.", "The letter has been sent."],
+                    tip: "Explain the 'why' of passive first: we use it when the agent is unknown, unimportant, or obvious. It's not just a grammar exercise — it has a real communicative purpose."
+                },
+                {
+                    id: 'b1_12',
+                    title: "Modal Verbs: Full Range",
+                    category: "Modals",
+                    desc: "Must/can't for logical deduction. Should for expectation. Shall for offers/suggestions. Would for polite requests. Would for past habits (repeated actions).",
+                    examples: ["That must be John — he's the only one with a red coat.", "The results should arrive tomorrow.", "Would you mind waiting?", "We would visit my grandparents every Christmas."],
+                    tip: "'Would' for past habits is often confused with 'used to'. Key: 'would' only works for repeated past ACTIONS (not states). 'I would live there' sounds wrong; 'I used to live there' is correct."
+                },
+                {
+                    id: 'b1_13',
+                    title: "Used to",
+                    category: "Structure",
+                    desc: "Past habits and states that are no longer true. Negative: didn't use to. Questions: Did you use to...? Difference from 'would' for past habits (used to works for states; would does not).",
+                    examples: ["I used to have long hair.", "She didn't use to drink coffee.", "Did you use to live here?"],
+                    tip: "State verbs cannot use 'would' for past habits: 'I used to love jazz' ✓ / 'I would love jazz' ✗. The distinction matters at B2+, but introduce it here."
+                },
+                {
+                    id: 'b1_14',
+                    title: "Defining Relative Clauses",
+                    category: "Structure",
+                    desc: "Essential information — no commas. Who (people), which (things), that (people/things in informal), whose (possession), where (place), when (time). Omitting the pronoun when it is the object.",
+                    examples: ["The man who called me is my uncle.", "The book that I read was amazing.", "The house where she grew up was demolished."],
+                    tip: "Teach contact clauses (omitting 'that/who/which') as soon as possible: 'The girl I met' is more natural than 'The girl that I met' in speech."
+                },
+                {
+                    id: 'b1_15',
+                    title: "Gerunds & Infinitives: Extended",
+                    category: "Verbs",
+                    desc: "Gerund as subject. Gerund after prepositions. Meaning-change verbs: stop + -ing (cease) vs stop + infinitive (in order to). Remember/forget/try/regret with both forms.",
+                    examples: ["Swimming is good exercise.", "I'm interested in learning.", "She stopped smoking. / She stopped to smoke.", "Remember to lock the door. / I remember locking it."],
+                    tip: "The meaning-change verbs are the real challenge: 'I tried eating less sugar' (experiment) vs 'I tried to eat less sugar' (attempt/effort). Real-life context helps massively here."
+                },
+                {
+                    id: 'b1_16',
+                    title: "Phrasal Verbs: Introduction",
+                    category: "Vocabulary",
+                    desc: "Verb + particle(s). Intransitive (break down, give up, grow up). Separable transitive (turn off, pick up, look up). Inseparable transitive (look after, run into). Three-part verbs (put up with, get on with).",
+                    examples: ["My car broke down on the motorway.", "Can you look after my cat?", "I can't put up with this noise."],
+                    tip: "Teach phrasal verbs in context and in lexical sets (travel: check in, set off, touch down; relationships: fall out, make up, break up). Never teach them in isolation."
+                },
+                {
+                    id: 'b1_17',
+                    title: "Future Forms: Contrast",
+                    category: "Tenses",
+                    desc: "Will (spontaneous, prediction), going to (plan/intention, evidence), present continuous (fixed arrangement), present simple (timetable). Future continuous (in progress at a future time). Future perfect (completed before a future point).",
+                    examples: ["I'll help you! (spontaneous)", "I'm meeting Sarah tomorrow (arrangement).", "The train leaves at 9am (timetable).", "I'll have finished by 5 o'clock (future perfect)."],
+                    tip: "The four futures feel overwhelming. Anchor each to a context: diary entry = present continuous. Train schedule = present simple. Sudden offer = will. Intention = going to."
+                },
+                {
+                    id: 'b1_18',
+                    title: "Wish / If Only",
+                    category: "Structure",
+                    desc: "Wish + past simple: present regret or desire (I wish I knew the answer). Wish + past perfect: past regret (I wish I hadn't said that). Wish + would: annoyance or desire for change. If only = stronger emotion than wish.",
+                    examples: ["I wish I spoke Italian.", "I wish I had studied harder.", "I wish you would stop interrupting!", "If only I had more time!"],
+                    tip: "Wish perfectly mirrors conditional logic: wish + past simple = 2nd conditional feeling; wish + past perfect = 3rd conditional feeling. Students who know conditionals pick this up fast."
+                },
+                {
+                    id: 'b1_19',
+                    title: "Question Tags",
+                    category: "Structure",
+                    desc: "Auxiliary (opposite polarity) + pronoun. Affirmative → negative tag. Negative → positive tag. Special: I am → aren't I? Let's → shall we? Imperatives → will you/won't you?",
+                    examples: ["It's cold, isn't it?", "You haven't eaten, have you?", "Let's go, shall we?"],
+                    tip: "Intonation is the real lesson here: falling intonation = I'm confident and just chatting. Rising intonation = I'm genuinely not sure, please confirm. Same words, completely different meaning."
+                },
+                {
+                    id: 'b1_20',
+                    title: "So / Such / Too / Enough",
+                    category: "Adverbs",
+                    desc: "So + adjective/adverb + that. Such + (a/an) + noun (+ adjective) + that. Too = more than necessary (negative). Enough = sufficient (positive). Enough comes after adjectives/adverbs, before nouns.",
+                    examples: ["It was so hot that we couldn't sleep.", "It was such a hot day that we stayed inside.", "The bag is too heavy to carry.", "She isn't old enough to vote."],
+                    tip: "So vs Such: 'so' comes before an adjective/adverb. 'Such' comes before a noun (with or without adjective). The trick: if you can say 'a(n) ___ noun', you need 'such'."
+                },
+                {
+                    id: 'b1_21',
+                    title: "Quantifiers: Extended",
+                    category: "Determiners",
+                    desc: "A few vs few (positive vs negative connotation). A little vs little. Both, either, neither. Each vs every. All, most, some, any, none of the... Plenty of, a great deal of, a number of.",
+                    examples: ["A few friends came (good). Few people know (almost none).", "Both options are good.", "Neither answer is correct.", "Every student must attend."],
+                    tip: "'Few' (no 'a') is negative in feel: 'few people agree' = almost nobody. 'A few people agree' = some people do. This is a sophisticated distinction that changes the entire meaning."
+                }
             ]
         },
         'B2': {
             title: "Complexity & Nuance",
-            desc: "Abstract ideas, regrets, narrative sequencing, and formal register.",
+            desc: "Abstract ideas, regrets, narrative sequencing, formal register, and rhetorical structure.",
             topics: [
-                { id: 'b2_1', title: "Second Conditional", category: "Structure", desc: "Unreal/Hypothetical Present.", examples: ["If I were rich, I would travel."], tip: "The 'If I were you' advice structure." },
-                { id: 'b2_2', title: "Third Conditional", category: "Structure", desc: "Unreal Past / Regrets.", examples: ["If I had known, I would have come."], tip: "Pronunciation of 'would've'." },
-                { id: 'b2_3', title: "Past Perfect Simple", category: "Tenses", desc: "The 'Past of the Past'.", examples: ["When I arrived, the train had left."], tip: "Draw a timeline." },
-                { id: 'b2_4', title: "Past Perfect Continuous", category: "Tenses", desc: "Background duration in the past.", examples: ["He had been driving for hours when he crashed."], tip: "Emphasize exhaustion/visible results." },
-                { id: 'b2_5', title: "Reported Speech", category: "Structure", desc: "Backshifting tenses.", examples: ["He said he had finished."], tip: "Don't forget time markers (tomorrow -> the next day)." },
-                { id: 'b2_6', title: "Future Continuous", category: "Tenses", desc: "Action in progress at future time.", examples: ["At 8pm, I will be eating."], tip: "Polite inquiries: 'Will you be using the car?'" },
-                { id: 'b2_7', title: "Passive (Advanced)", category: "Structure", desc: "Passives with Modals/Perfects.", examples: ["It must be done.", "It has been stolen."], tip: "Formal/Academic writing." },
-                { id: 'b2_8', title: "Modals of Past Deduction", category: "Modals", desc: "Speculating on the past.", examples: ["He must have forgotten."], tip: "Structure: Modal + Have + V3." },
-                { id: 'b2_9', title: "Mixed Conditionals", category: "Structure", desc: "Past Action -> Present Result.", examples: ["If I had studied, I would have a job now."], tip: "Mixing 3rd (If) and 2nd (Result)." },
-                { id: 'b2_10', title: "Wishes & Regrets", category: "Structure", desc: "I wish I were / I wish I had.", examples: ["I wish I had called her."], tip: "Same logic as conditionals." },
-                { id: 'b2_11', title: "Non-Defining Relative Clauses", category: "Structure", desc: "Extra info with commas.", examples: ["My mom, who is 60, likes tennis."], tip: "Pause at the commas." },
-                { id: 'b2_12', title: "So / Such / Too / Enough", category: "Adverbs", desc: "Intensifiers and Result.", examples: ["It was such a good movie that..."], tip: "Structure: So + Adj vs Such + Noun." }
+                {
+                    id: 'b2_1',
+                    title: "Passive Voice: Advanced Forms",
+                    category: "Structure",
+                    desc: "Past perfect passive. Future perfect passive. Modal passives (should be done, must have been stolen). Passive infinitives. Passive gerunds. Causative have/get. Impersonal passive reporting structures (It is said that / He is thought to be).",
+                    examples: ["The work should have been completed earlier.", "I had my car repaired.", "She hates being told what to do.", "It is believed that the treaty was signed in secret."],
+                    tip: "The causative (I had my hair cut) is surprisingly tricky: it means someone else did it for you. Don't confuse with 'I had cut my hair myself'."
+                },
+                {
+                    id: 'b2_2',
+                    title: "Mixed Conditionals",
+                    category: "Structure",
+                    desc: "Past situation → present result: If + past perfect, would + base verb. Present situation → past result: If + past simple, would have + past participle. Mixing the 2nd and 3rd conditional.",
+                    examples: ["If I had studied medicine, I would be a doctor now.", "If I weren't so shy, I would have spoken to her."],
+                    tip: "Draw a two-axis grid: past/present in the 'if' clause vs past/present in the result clause. Show students all four combinations and which ones exist."
+                },
+                {
+                    id: 'b2_3',
+                    title: "Conditional Inversion",
+                    category: "Structure",
+                    desc: "Dropping 'if' and inverting the subject and auxiliary for formal effect. Had I known... / Were I to... / Should you require...",
+                    examples: ["Had I known about the meeting, I would have attended.", "Were I to resign, the whole team would suffer.", "Should you need assistance, please contact us."],
+                    tip: "This is the grammar of business letters, legal documents, and formal speeches. Show students real-world examples (insurance policies, formal emails) to give it authentic context."
+                },
+                {
+                    id: 'b2_4',
+                    title: "Non-Defining Relative Clauses",
+                    category: "Structure",
+                    desc: "Extra, non-essential information. Always use commas. Who/which/whose/when/where — NOT 'that'. 'Which' can refer to the entire preceding clause.",
+                    examples: ["My sister, who lives in Paris, is a doctor.", "The report, which I finished last night, was well received.", "She passed, which surprised everyone."],
+                    tip: "Test: cover the relative clause with your hand. Can you still identify the noun? If yes → non-defining (use commas). If no → defining (no commas). This test always works."
+                },
+                {
+                    id: 'b2_5',
+                    title: "Cleft Sentences",
+                    category: "Structure",
+                    desc: "It-clefts for emphasis on one element: It was John who called. What-clefts (pseudo-clefts): What I need is sleep. Reverse pseudo-cleft: Sleep is what I need. All-cleft: All I want is a cup of tea.",
+                    examples: ["It was the noise that woke me, not the light.", "What surprised me was her reaction.", "All I'm asking for is a little respect."],
+                    tip: "Cleft sentences correct misunderstandings. 'It was JOHN who called (not Paul).' Teach them as clarification and correction tools — this gives students an immediate communicative purpose."
+                },
+                {
+                    id: 'b2_6',
+                    title: "Inversion",
+                    category: "Structure",
+                    desc: "Negative/restrictive adverbials at the front trigger inversion: Never, Rarely, Seldom, Not until, Only when, Hardly, Scarcely, No sooner, Not only... but also. So/Such + adj + inversion.",
+                    examples: ["Never have I seen such a thing.", "Not only did she win the race, but she also broke the record.", "So exhausted was he that he fell asleep mid-sentence."],
+                    tip: "Start with 'never': 'I have never done this' → 'Never have I done this.' It feels dramatic and memorable. Inversion is always more emphatic than normal word order."
+                },
+                {
+                    id: 'b2_7',
+                    title: "Modal Verbs: Perfect Forms",
+                    category: "Modals",
+                    desc: "Modal + have + past participle for past deduction, regret, criticism. Must have, can't have, could have, should have, would have, might have, needn't have, didn't need to.",
+                    examples: ["She must have missed the bus.", "You should have told me earlier!", "You needn't have bought flowers — there were plenty.", "I could have been a doctor."],
+                    tip: "Needn't have vs didn't need to: 'You needn't have cooked — I already ate' (you cooked but it was unnecessary). 'I didn't need to cook because she had already made dinner' (I knew in advance, so I didn't cook)."
+                },
+                {
+                    id: 'b2_8',
+                    title: "Advanced Reported Speech",
+                    category: "Structure",
+                    desc: "Full range of reporting verb patterns: verb + infinitive, verb + object + infinitive, verb + -ing, verb + that clause. Subjunctive in reported structures: He insisted that she be present.",
+                    examples: ["She persuaded him to stay.", "He denied having stolen the money.", "They demanded that the findings be published.", "She recommended that we take a different route."],
+                    tip: "The subjunctive reporting pattern (suggested/demanded/insisted that + base verb) is formal but common in business English. 'He insisted that she leave immediately' — 'leave', not 'leaves'."
+                },
+                {
+                    id: 'b2_9',
+                    title: "The Subjunctive",
+                    category: "Structure",
+                    desc: "Mandative subjunctive after verbs of demand/suggestion/recommendation/requirement. Base verb for all persons (no -s in 3rd person). Formulaic subjunctives: be that as it may, as it were, so be it, come what may.",
+                    examples: ["I suggest that he apply for the job.", "It is essential that she be present.", "Be that as it may, we must continue."],
+                    tip: "The subjunctive often surprises learners — it looks 'wrong' ('he be present'?). Explain it as a historical form preserved in formal English. It sounds correct in formal writing even if unusual."
+                },
+                {
+                    id: 'b2_10',
+                    title: "Participle Clauses",
+                    category: "Structure",
+                    desc: "Present participle (active/simultaneous): Hearing the noise, she turned around. Past participle (passive meaning): Written in 1848, the novel is still read. Perfect participle (earlier action): Having finished, he left.",
+                    examples: ["Walking down the street, I noticed something strange.", "Built in the 1600s, the castle is now a museum.", "Having read the report, she made her decision."],
+                    tip: "Critical rule: the subject of the participle clause must be the same as the subject of the main clause. 'Walking down the street, the rain started' is a dangling participle error."
+                },
+                {
+                    id: 'b2_11',
+                    title: "Ellipsis & Substitution",
+                    category: "Style",
+                    desc: "Ellipsis: omitting predictable words. 'Can you help?' 'I'll try.' (= try to help). Auxiliary substitution: she studies harder than I do. So/neither short responses: 'I'm tired.' 'So am I.' 'Neither am I.'",
+                    examples: ["'Are you coming?' 'I hope so.'", "'She's tall.' 'So is her sister.'", "'I'm not hungry.' 'Neither am I.'", "She asked me to help and I agreed to do so."],
+                    tip: "These are marks of natural, fluent English. A student who always says the full form sounds stilted. 'So am I' instead of 'I am tired too' is the difference between textbook and real English."
+                },
+                {
+                    id: 'b2_12',
+                    title: "Discourse Markers",
+                    category: "Structure",
+                    desc: "Addition: furthermore, moreover, in addition. Contrast: however, nevertheless, on the other hand, whereas. Result: therefore, consequently, as a result. Sequence: firstly, subsequently, finally. Exemplifying: for instance, namely. Concluding: in short, to sum up.",
+                    examples: ["The project was expensive; however, the results justified the cost.", "Furthermore, the evidence suggests a different conclusion.", "Consequently, all staff were asked to work overtime."],
+                    tip: "Discourse markers are what separate a B2 essay from a B1 one. They signal logical relationships between ideas. Teach them in contrasting pairs: 'however' vs 'therefore' first."
+                },
+                {
+                    id: 'b2_13',
+                    title: "Complex Noun Phrases",
+                    category: "Structure",
+                    desc: "Pre-modification (article + adj + adj + noun). Post-modification (noun + relative clause / participle clause / prepositional phrase). Abstract nominalisation. Noun + noun compounds.",
+                    examples: ["The controversial new government policy on immigration.", "The decision made by the committee last Thursday.", "An increase in productivity.", "A policy maker."],
+                    tip: "Dense noun phrases are the hallmark of formal written English. Students need to learn to both read and produce them. Start with reading analysis, then move to production."
+                },
+                {
+                    id: 'b2_14',
+                    title: "Articles: Advanced Rules",
+                    category: "Determiners",
+                    desc: "The + adjective for groups (the rich, the poor). The with unique references (the sun, the internet). Zero article with abstract concepts in general use (love, life, freedom). Institutional uses (in hospital / at school). Articles with musical instruments.",
+                    examples: ["The unemployed face significant challenges.", "She plays the violin.", "Life is short.", "He's been in hospital for a week."],
+                    tip: "'The rich' means 'rich people in general' — the article turns an adjective into a collective noun. This is an elegant structure students love once they discover it."
+                },
+                {
+                    id: 'b2_15',
+                    title: "Fronting for Emphasis",
+                    category: "Structure",
+                    desc: "Moving objects or adverbials to the front of the sentence for emphasis or stylistic effect. Concessive fronting: Brilliant though it is... Place adverbials: At the end of the road stood an old house.",
+                    examples: ["Those biscuits I can't resist.", "Brilliant though the plan is, it has some serious flaws.", "Down the stairs came a strange figure."],
+                    tip: "Fronting is common in speech for emphasis: 'That I didn't expect.' 'Nice place, this.' Teach it as a spoken device first — students often don't realise they already hear it constantly."
+                }
             ]
         },
         'C1': {
-            title: "Advanced Structure",
-            desc: "Emphasis, inversion, and stylistic flexibility.",
+            title: "Advanced Structure & Sophistication",
+            desc: "Precision, stylistic flexibility, academic language, and complex syntactic control.",
             topics: [
-                { id: 'c1_1', title: "Inversion", category: "Structure", desc: "Negative adverbials for emphasis.", examples: ["Never have I seen such a thing."], tip: "Formal and dramatic." },
-                { id: 'c1_2', title: "Cleft Sentences", category: "Structure", desc: "Changing focus.", examples: ["It was John who called.", "What I need is sleep."], tip: "Correcting misinformation." },
-                { id: 'c1_3', title: "Participle Clauses", category: "Structure", desc: "Reducing relative clauses.", examples: ["Walking down the street, I saw..."], tip: "Ensure the subject is the same." },
-                { id: 'c1_4', title: "Subjunctive Mood", category: "Structure", desc: "Formal demands and suggestions.", examples: ["I suggest he be present."], tip: "Base form usage." },
-                { id: 'c1_5', title: "Advanced Phrasal Verbs", category: "Vocabulary", desc: "3-part verbs and nuance.", examples: ["Come up against.", "Face up to."], tip: "Register: When to use them vs formal verbs." },
-                { id: 'c1_6', title: "Future in the Past", category: "Tenses", desc: "Was going to / Was to have.", examples: ["I was meant to be there."], tip: "Unfulfilled plans." },
-                { id: 'c1_7', title: "Impersonal Passive", category: "Structure", desc: "Reporting verbs.", examples: ["It is said that...", "He is believed to be..."], tip: "Journalistic style." },
-                { id: 'c1_8', title: "Verb Patterns (Advanced)", category: "Verbs", desc: "Object + Infinitive / -ing.", examples: ["I resent being told what to do."], tip: "Complex memorization." },
-                { id: 'c1_9', title: "Gradable vs Ungradable", category: "Adjectives", desc: "Intensifiers.", examples: ["Absolutely furious", "Very angry"], tip: "Collocations." },
-                { id: 'c1_10', title: "Use of 'Get' (Causative)", category: "Structure", desc: "Get something done.", examples: ["I got my car fixed."], tip: "Passive meaning." }
+                {
+                    id: 'c1_1',
+                    title: "Full Tense System: Precision & Contrast",
+                    category: "Tenses",
+                    desc: "Complete mastery of all tense-aspect combinations. Subtle aspect distinctions. State verbs and their exceptions. Historic present for narrative effect. Future in the past (was going to, was about to, was meant to).",
+                    examples: ["She has been living here for years (still lives there) vs She lived here for years (no longer).", "He was about to speak when the lights went out.", "I was going to call but I forgot."],
+                    tip: "The distinction between perfect simple and perfect continuous is the last tense system hurdle: 'I've read three books' (completion/count) vs 'I've been reading all day' (duration/immersion)."
+                },
+                {
+                    id: 'c1_2',
+                    title: "Advanced Modal Verb Usage",
+                    category: "Modals",
+                    desc: "Will/would for characteristic behaviour. Dare and need as semi-modals. May/might for concession. Shall in formal/legal obligations. Layered modality: She must have been hoping they would have finished.",
+                    examples: ["He will leave his keys everywhere (characteristic habit).", "How dare you speak to me like that!", "The lessee shall pay rent monthly (legal)."],
+                    tip: "'Will' for annoying habits ('He will leave the lights on!') conveys irritation. The tone is always frustrated. This is a very British pattern that learners find fascinating and immediately useful."
+                },
+                {
+                    id: 'c1_3',
+                    title: "Conditionals: Full Range",
+                    category: "Structure",
+                    desc: "All four main types plus mixed. Alternative conjunctions: given that, assuming that, on the assumption that, in the event that, in case, only if, even if, whether or not, provided that.",
+                    examples: ["Given that the budget has been approved, we can proceed.", "I'll help you, provided you help me in return.", "Even if she apologises, I won't forgive her easily."],
+                    tip: "The alternatives to 'if' are the mark of academic and professional writing. 'In the event that...' sounds more formal than 'If...'. Register awareness is the real C1 skill."
+                },
+                {
+                    id: 'c1_4',
+                    title: "Advanced Passive Constructions",
+                    category: "Structure",
+                    desc: "Complex modal perfect passives. Double object passives: She was given a prize. Get-passive (informal). Passive reporting with perfect infinitive. Impersonal passives in academic writing: It was concluded that...",
+                    examples: ["The company is reported to have made a significant loss.", "He was told the wrong address.", "It should be noted that the data is incomplete.", "She got promoted last month."],
+                    tip: "The impersonal passive construction ('It is said that...' / 'It has been suggested that...') is the foundation of cautious, objective academic writing. Teach it as a hedging device, not just a grammar form."
+                },
+                {
+                    id: 'c1_5',
+                    title: "Nominalisation",
+                    category: "Style",
+                    desc: "Converting verbs and adjectives into nouns to create formal, dense written prose. Noun + preposition patterns: an increase in, a tendency to, an approach to, the extent to which.",
+                    examples: ["We decided to expand → The decision to expand.", "Productivity increased → There was an increase in productivity.", "The investigation found errors → The findings of the investigation revealed errors."],
+                    tip: "Nominalisation is what makes academic writing feel 'heavy'. Teach students to recognise it in reading first, then produce it in writing. Also teach when NOT to use it — overuse obscures meaning."
+                },
+                {
+                    id: 'c1_6',
+                    title: "Complex Subordinate Clause Structures",
+                    category: "Structure",
+                    desc: "Absolute constructions: The meeting over, everyone went home. Appositive phrases. Concessive clauses: however much, no matter what. Result clauses: to such a degree that, so much so that. Purpose: lest, for fear that, in order that.",
+                    examples: ["His work done, he finally relaxed.", "The CEO, a former lawyer, handled the negotiation.", "She practised every day, so much so that she became the best in the country."],
+                    tip: "Absolute constructions are a sophisticated way to compress two clauses into one. 'His hands shaking, he opened the letter' — this creates vivid, cinematic prose."
+                },
+                {
+                    id: 'c1_7',
+                    title: "Inversion: Extended Range",
+                    category: "Structure",
+                    desc: "All negative and restrictive adverbials: Never, Rarely, Seldom, Scarcely, Hardly, Not until, Only after, Only then, Little, By no means, Under no circumstances, At no time, In no way, On no account.",
+                    examples: ["Under no circumstances should you sign without reading.", "Little did she know what was about to happen.", "Only after the storm did we realise the extent of the damage."],
+                    tip: "'Little did I know...' is a particularly powerful storytelling device. It signals dramatic irony — the narrator knows more than the past self. Teach it in narrative writing."
+                },
+                {
+                    id: 'c1_8',
+                    title: "Advanced Gerund & Infinitive Structures",
+                    category: "Verbs",
+                    desc: "Perfect infinitive: to have done. Perfect gerund: having done. Passive infinitive: to be told. Passive gerund: being told. Perfect passive infinitive: to have been told. Perfect passive gerund: having been told.",
+                    examples: ["I would like to have met Hemingway.", "I regret having said that.", "She hates being corrected.", "He claims to have been informed incorrectly.", "Having been warned, she was prepared."],
+                    tip: "Build these systematically: infinitive → passive infinitive → perfect infinitive → perfect passive infinitive. Each layer adds one transformation. Students who see the pattern manage all six forms."
+                },
+                {
+                    id: 'c1_9',
+                    title: "Hedging & Academic Caution",
+                    category: "Style",
+                    desc: "Distancing from claims: it appears that, it would seem, this suggests that, arguably, it could be argued that, there is a tendency to, to some extent, it is possible that, to a large/limited extent.",
+                    examples: ["It could be argued that the policy has had limited success.", "There appears to be a correlation between stress and performance.", "To some extent, the theory holds."],
+                    tip: "Hedging is not weakness — it is accuracy. In academic writing, saying 'this proves' when data only 'suggests' is a methodological error. Teach hedging as intellectual precision, not uncertainty."
+                },
+                {
+                    id: 'c1_10',
+                    title: "Impersonal Passive & Reporting Structures",
+                    category: "Structure",
+                    desc: "It is said/believed/thought/claimed/reported/alleged/known/understood + that clause. Subject + is said/believed/thought + to be / to have done.",
+                    examples: ["It is widely believed that the economy will improve.", "The CEO is reported to be considering resignation.", "He is thought to have left the country."],
+                    tip: "This structure is essential for journalism, academic writing, and diplomatic language. It attributes a claim without endorsing it — an incredibly useful tool for nuanced communication."
+                },
+                {
+                    id: 'c1_11',
+                    title: "Gradable vs Ungradable Adjectives",
+                    category: "Adjectives",
+                    desc: "Gradable adjectives take very/quite/rather/extremely. Ungradable (extreme/absolute) adjectives use absolutely/completely/utterly. Wrong collocations sound unnatural.",
+                    examples: ["Very tired ✓ / Absolutely exhausted ✓ / Very exhausted ✗", "Absolutely furious ✓ / Very furious ✗", "Completely unique ✓ / Very unique ✗"],
+                    tip: "The collocation is what matters. Native speakers never say 'very furious' or 'very devastating' — they feel wrong because those adjectives are already extreme. This knowledge marks out a truly advanced speaker."
+                },
+                {
+                    id: 'c1_12',
+                    title: "Cohesion & Information Structure",
+                    category: "Style",
+                    desc: "Given-new principle: known information before new. End-focus: most important info at the end. Theme and rheme. Lexical chains. Complex anaphoric and cataphoric reference. Paragraph-level grammar.",
+                    examples: ["The company launched a new product. The product was an immediate success. (cataphoric reference avoided with lexical repetition for clarity)", "There is a woman in my office. She is the one I told you about."],
+                    tip: "Information structure is invisible to most learners but central to professional writing. Good writers instinctively place familiar information first and new information last in each clause."
+                },
+                {
+                    id: 'c1_13',
+                    title: "Spoken vs Written Grammar",
+                    category: "Style",
+                    desc: "Contracted vs full forms and register implications. Discourse markers in speech: you know, I mean, sort of, actually, basically, anyway. Sentence fragments in speech. Pragmatic competence and formulaic language.",
+                    examples: ["'I mean, it's not exactly what I expected, you know?' (spoken)", "'The outcome was not entirely consistent with initial expectations.' (written)", "'Lovely weather!' (fragment — fine in speech)"],
+                    tip: "Many advanced students write as they speak (too informal) or speak as they write (too formal and stilted). Register switching is the real C1 goal — knowing WHEN to use which style."
+                }
             ]
         },
         'C2': {
             title: "Mastery & Style",
-            desc: "Manipulation of the language for rhetorical effect, humor, and subtle implication.",
+            desc: "Rhetorical command, archaic structures, full register control, and artistry with the language.",
             topics: [
-                { id: 'c2_1', title: "Ellipsis & Substitution", category: "Style", desc: "Omitting words to avoid repetition.", examples: ["I didn't mean to.", "I hope so."], tip: "Essential for natural fluency." },
-                { id: 'c2_2', title: "Nominalisation", category: "Style", desc: "Turning verbs/adjectives into nouns.", examples: ["The implementation of the plan..."], tip: "Academic and scientific writing." },
-                { id: 'c2_3', title: "Hedging", category: "Style", desc: "Distancing and softening.", examples: ["It is arguably the case that...", "One might suggest..."], tip: "Politeness and academic caution." },
-                { id: 'c2_4', title: "Discourse Markers", category: "Structure", desc: "Organizing complex arguments.", examples: ["Be that as it may...", "Conversely..."], tip: "Cohesion in essays." },
-                { id: 'c2_5', title: "Inverted Conditionals", category: "Structure", desc: "Dropping 'If' in formal contexts.", examples: ["Had I known...", "Should you require..."], tip: "Business correspondence." },
-                { id: 'c2_6', title: "Fronting", category: "Structure", desc: "Moving objects to the start.", examples: ["Strange it was.", "That I cannot do."], tip: "Emphatic storytelling." },
-                { id: 'c2_7', title: "Subtle Modals", category: "Modals", desc: "Dare, Needn't have, Ought to.", examples: ["How dare you.", "You needn't have bothered."], tip: "Archaic but common in set phrases." },
-                { id: 'c2_8', title: "Fixed Expressions & Idioms", category: "Vocabulary", desc: "Binomials and trinomials.", examples: ["By and large.", "Way, shape, or form."], tip: "Rhythm and stress." },
-                { id: 'c2_9', title: "Stylistic Inversion", category: "Style", desc: "After place/movement adverbials.", examples: ["Up went the balloon."], tip: "Literary / Descriptive." },
-                { id: 'c2_10', title: "Patterns of Comparison", category: "Structure", desc: "Double comparatives.", examples: ["The more I study, the less I know."], tip: "Parallel structure." }
+                {
+                    id: 'c2_1',
+                    title: "Archaic, Legal & Highly Formal Grammar",
+                    category: "Style",
+                    desc: "Legal language: The party hereto agrees, notwithstanding the foregoing, the said property shall. Archaic subjunctive: Be it known, lest we be heard. Archaic pronouns: thou/thee/thy (for reading Shakespeare, the Bible).",
+                    examples: ["Lest we forget.", "Be it known that the undersigned agrees to all terms.", "The lessee shall vacate the premises within 30 days."],
+                    tip: "Even at C2, the goal is passive comprehension + selective production. Students should be able to read a legal contract or Shakespeare, not necessarily write in legal English daily."
+                },
+                {
+                    id: 'c2_2',
+                    title: "Rhetorical Grammar Structures",
+                    category: "Style",
+                    desc: "Parallelism. Tricolon (rule of three). Anaphora (repetition at the start). Chiasmus (reversed parallel structure). Asyndeton (no conjunctions). Polysyndeton (excessive conjunctions for effect).",
+                    examples: ["'We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields...' (anaphora)", "'Ask not what your country can do for you...' (chiasmus)", "'I came, I saw, I conquered.' (asyndeton + tricolon)"],
+                    tip: "Rhetorical devices are grammar made artistic. Churchill, Kennedy, Mandela — all used these structures consciously. Analysing great speeches shows students that grammar choices create emotional impact."
+                },
+                {
+                    id: 'c2_3',
+                    title: "Full Register Mastery",
+                    category: "Style",
+                    desc: "Fluent movement between frozen, formal, consultative, casual, and intimate registers. Dialect awareness: British/American/Australian differences. Informal grammar: gonna, wanna, gotta, ain't, double negatives in dialect.",
+                    examples: ["Formal: 'I would be grateful if you could advise me.' Casual: 'Could you help me out?' Intimate: 'Got any ideas?'", "British: I've just eaten. American: I just ate."],
+                    tip: "C2 is not 'perfect formal English'. It is the ability to sound exactly right in any situation. A C2 speaker knows when 'gonna' is correct and when it would be inappropriate."
+                },
+                {
+                    id: 'c2_4',
+                    title: "Pragmatics & Implicature",
+                    category: "Style",
+                    desc: "What is meant vs what is said (Gricean maxims). Indirect speech acts. Politeness and face-saving strategies. Implicature, irony, sarcasm, understatement, hyperbole at a structural level.",
+                    examples: ["'He's... interesting.' (implicature: not brilliant)", "'Could you pass the salt?' (request, not a question about ability)", "'Not without talent.' (litotes: actually very talented)"],
+                    tip: "Pragmatic competence is what separates a technically correct speaker from a naturally fluent one. 'I'm fine' in a flat tone means the opposite — and knowing this is true communicative mastery."
+                },
+                {
+                    id: 'c2_5',
+                    title: "Ellipsis & Substitution (Mastery)",
+                    category: "Style",
+                    desc: "Complete command of all ellipsis types: clausal, verbal, nominal. 'Do so' substitution. 'One' as a substitute. Cataphoric ellipsis. Avoiding repetition with full naturalness.",
+                    examples: ["'I didn't mean to.' (= to do it)", "'Take one if you want one.' (nominal substitution)", "'I hope so.' / 'I think not.' (clausal substitution with so/not)"],
+                    tip: "Full mastery of ellipsis is one of the last things learners acquire because it requires internalising what can be assumed from context. Analyse dialogue in literature and film for the best examples."
+                },
+                {
+                    id: 'c2_6',
+                    title: "Free Indirect Discourse",
+                    category: "Style",
+                    desc: "The blend of narrator's voice and character's inner speech without quotation marks or explicit 'she thought'. Backshift tenses. Third-person pronouns. Characteristic of literary narrative.",
+                    examples: ["'She walked into the room. Tomorrow she would leave. What was the point of it all?' (narrator + character blended)", "'He looked at the bill. Fifty pounds. Ridiculous.'"],
+                    tip: "Free indirect discourse is the signature style of Jane Austen, Virginia Woolf, and most modern literary fiction. Once students see it, they find it everywhere — in novels, films, and journalism."
+                },
+                {
+                    id: 'c2_7',
+                    title: "Nominalisation at Mastery Level",
+                    category: "Style",
+                    desc: "Full mastery of academic noun phrase construction. Knowing when to nominalise (formal, written) and when to de-nominalise (direct, clear). Stylistic choice as a conscious rhetorical decision.",
+                    examples: ["Dense: 'The failure of the management team to implement the recommendations resulted in...'", "Clearer: 'The management team failed to act on the recommendations, which caused...'"],
+                    tip: "C2 is knowing that both forms are correct and choosing consciously. Overuse of nominalisation is a known weakness of non-native academic writers. The ability to switch is the mastery."
+                },
+                {
+                    id: 'c2_8',
+                    title: "Complex Negation & Scope",
+                    category: "Structure",
+                    desc: "Litotes: understatement with negation (not uncommon, not without merit). Neg-raising: I don't think she'll come (= I think she won't). Scope of negation ambiguity. Double negatives in dialect (descriptive awareness).",
+                    examples: ["'Not an unimpressive result.' (= actually impressive)", "'I don't think it will work.' (neg-raising: I think it won't)", "'Not all students passed.' (some didn't) vs 'All students didn't pass.' (ambiguous)"],
+                    tip: "Litotes is deeply embedded in British understatement culture. 'Not bad at all' = very good. 'Not entirely without merit' = actually quite good. Recognising litotes is essential for understanding British irony."
+                },
+                {
+                    id: 'c2_9',
+                    title: "Word Formation: Complete System",
+                    category: "Vocabulary",
+                    desc: "All affixes (prefixes and suffixes). Compounding. Conversion/zero-derivation. Back-formation. Blending (brunch, smog). Clipping (phone, flu, gym). Acronyms and initialisms and their grammatical behaviour.",
+                    examples: ["pseudo-intellectual, hyper-sensitive, ultra-modern (prefixes)", "to google, to text, to email (conversion: proper noun → verb)", "to edit (back-formation ← editor)"],
+                    tip: "Word formation at C2 is about productive, creative command. A C2 learner coins new words naturally: 'He's being very un-cooperative', 'That's a very Google-y approach'. Word formation is the grammar of vocabulary."
+                },
+                {
+                    id: 'c2_10',
+                    title: "Grammar Across Disciplines & Text Types",
+                    category: "Style",
+                    desc: "Academic: passive, nominalisation, hedging, citation language. Legal: modal shall, passive, archaic forms. Journalistic: present perfect for immediacy, headline grammar (zero articles, present simple for past). Literary: narrative tense shifts, unusual word order.",
+                    examples: ["Headline: 'PM MEETS PRESIDENT IN SECRET TALKS' (zero article, present simple)", "Academic: 'It has been suggested that further research is required.'", "Literary: 'Gone was the innocence of his youth.'"],
+                    tip: "Headline grammar is its own dialect: articles disappear, present simple describes past events, infinitives show future ('PM TO VISIT FRANCE'). It's a fascinating micro-grammar that students love decoding."
+                },
+                {
+                    id: 'c2_11',
+                    title: "Inverted Conditionals (Full Range)",
+                    category: "Structure",
+                    desc: "All three inverted forms at mastery level. Had I known / Were she to arrive / Should you require. Used in business correspondence, legal texts, and formal speeches without any awkwardness.",
+                    examples: ["Had the report been submitted on time, the outcome might have been different.", "Were this proposal to be accepted, all parties would benefit.", "Should any questions arise, do not hesitate to contact us."],
+                    tip: "At C2, inversion in conditionals is produced naturally and without thinking. The test: does the student reach for 'Had I...' or 'If I had...'? The former is C2. Both are correct, but one is more elegant."
+                },
+                {
+                    id: 'c2_12',
+                    title: "Stylistic Grammar: Parataxis vs Hypotaxis",
+                    category: "Style",
+                    desc: "Parataxis: short, juxtaposed clauses without subordination (Hemingway style). Hypotaxis: complex subordinated structures (James style). Conscious choice between the two for rhythmic and emotional effect.",
+                    examples: ["Parataxis: 'I walked in. The room was empty. She was gone.'", "Hypotaxis: 'Upon entering the room, which was cold and silent in a way that immediately suggested something was wrong, I realised she had left.'"],
+                    tip: "This is the grammar-as-art lesson. Read Hemingway and Henry James back to back. The grammar choices ARE the style. Competent C2 writers choose the structure that creates the effect they want."
+                },
+                {
+                    id: 'c2_13',
+                    title: "Patterns of Comparison & Double Comparatives",
+                    category: "Structure",
+                    desc: "The more...the more / The less...the less parallel structure. Double comparatives for gradual change. Comparison patterns: not so much...as, rather than, as opposed to, compared with/to.",
+                    examples: ["The more I study, the less I seem to know.", "The situation is getting worse and worse.", "It was not so much a defeat as a strategic withdrawal."],
+                    tip: "Double comparatives express a proportional relationship. 'The more you practise, the better you become' is a complete structure where both clauses are grammatically linked. Students often forget the 'the' at the start."
+                }
             ]
         }
     };
