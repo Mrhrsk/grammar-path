@@ -86,6 +86,11 @@
             <div class="hidden md:flex space-x-8">
                 <button onclick="app.showSection('curriculum')" class="text-slate-600 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Curriculum</button>
                 <button onclick="app.showSection('roadmap')" class="text-slate-600 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Global Roadmap</button>
+                <a href="YOUR_GOOGLE_DRIVE_LINK" target="_blank"
+                   class="flex items-center gap-2 px-4 py-2 bg-slate-700 text-white rounded-md hover:bg-slate-800 transition-colors text-sm font-medium">
+                    <span>📄</span>
+                    <span>Download Full Roadmap</span>
+                </a>
             </div>
         </div>
     </div>
@@ -130,7 +135,7 @@
     <div id="view-roadmap" class="hidden">
         <div class="bg-white rounded-lg shadow-sm p-6 border border-stone-200">
             <h2 class="text-2xl font-bold text-slate-800 mb-4">The Complexity Ascent</h2>
-            <p class="text-slate-600 mb-8">This visualization tracks the cumulative "Grammatical Load" across the learning journey. Notice how the complexity spikes at the B2 transition point, where abstract concepts are introduced.</p>
+            <p class="text-slate-600 mb-8">This visualization tracks the cumulative "Grammatical Load" across the learning journey. Notice how the complexity spikes at the B1~B2 transition point, where abstract concepts are introduced.</p>
 
             <div class="chart-container">
                 <canvas id="roadmapChart"></canvas>
